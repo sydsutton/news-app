@@ -1,16 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import Main from "./components/MainComponent"
+import TopStories from "./components/TopStoriesComponent"
+import MostPopular from "./components/MostPopularComponent"
+
+import {BrowserRouter, Routes, Route} from "react-router-dom"
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <BrowserRouter>
+      <App />
+      
+      <Routes>
+        <Route exact path="/" element={<Main />} />
+        <Route path="/top-stories" element={<TopStories />} />
+        <Route path="/most-popular" element={<MostPopular />} />
+      </Routes>
+    </BrowserRouter>,
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
