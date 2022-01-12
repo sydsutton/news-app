@@ -7,6 +7,7 @@ const ContextProvider = (props) => {
     const API_KEY = process.env.REACT_APP_API_KEY
 
     const [sectionList, setSectionList] = useState([])
+    const [topStories, setTopStories] = useState([])
 
     useEffect(() => {
         let isMounted = true
@@ -17,11 +18,21 @@ const ContextProvider = (props) => {
         } catch {
             console.log("error")
         }
+
+        try {
+            fetch(`https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${API_KEY}`)
+                .then(res => res.json())
+                .then(data => setTopStories(data.results))
+        } catch {
+            console.log("error")
+        }
+
         return () => {isMounted = false}
     }, [])
+    
 
     return (
-        <Context.Provider value={{sectionList, API_KEY}}>
+        <Context.Provider value={{sectionList, API_KEY, topStories}}>
             {props.children}
         </Context.Provider>
     )

@@ -29,4 +29,9 @@ body{
 
 .max-width {
   max-width: 30rem;
+  width: 100%;
+}
+
+.image {
+  max-width: 400px;
 }

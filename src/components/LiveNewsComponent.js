@@ -1,6 +1,6 @@
 import React, {useContext, useState, useEffect} from "react"
 import {Context} from "../Context"
-import LiveNewsArticle from "./LiveNewsArticleComponent"
+import NewsArticle from "./NewsArticleComponent"
 
 const LiveNewsComponent = () => {
     const {sectionList, API_KEY} = useContext(Context)
@@ -22,7 +22,6 @@ const LiveNewsComponent = () => {
                 .then(res => res.json())
                 .then(data => {
                     if(isMounted){
-                        // console.log(data.results)
                         setNewsData([data.results])
                     } 
                 })
@@ -37,7 +36,7 @@ const LiveNewsComponent = () => {
 
     return (
         <>
-            <h1>Live News Sections</h1>
+            <h1 className="center">Live News Sections</h1>
             <p>{isLoading ? "Loading" : null}</p>
             <ul className="list-unstyled center">
                 {sectionList.map(section => {
@@ -54,8 +53,8 @@ const LiveNewsComponent = () => {
             <div className="center d-flex">
                 {newsData && !errorMessage ? 
                     newsData.map(data => data.map((article, index) => 
-                        <div className="max-width">
-                            <LiveNewsArticle article={article} key={index} />
+                        <div className="max-width" key={index}>
+                            <NewsArticle article={article} />
                         </div>
                     )) 
                 : 
