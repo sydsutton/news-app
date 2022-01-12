@@ -1,5 +1,6 @@
 import React, {useContext, useState, useEffect} from "react"
 import {Context} from "../Context"
+import LiveNewsArticle from "./LiveNewsArticleComponent"
 
 const LiveNewsComponent = () => {
     const {sectionList, API_KEY} = useContext(Context)
@@ -7,22 +8,21 @@ const LiveNewsComponent = () => {
     const [section, setSection] = useState("")
     const [newsData, setNewsData] = useState([])
     const [isLoading, setIsLoading] = useState(false)
+    const [errorMessage, setErrorMessage] = useState("")
 
-    useEffect(() => {
-        const getSectionData = async() => {
-            setIsLoading(true)
-            try {
-                await fetch(`https://api.nytimes.com/svc/news/v3/content/nyt/${section}.json?api-key=${API_KEY}`)
-                    .then(res => res.json())
-                    .then(data => setNewsData([data.results]))
-                    setIsLoading(false)
-            } catch(error) {
-                // console.log(error)
+    const handleClick = async() => {
+        setIsLoading(true)
+        try {
+            await fetch(`https://api.nytimes.com/svc/news/v3/content/nyt/${section}.json?api-key=${API_KEY}`)
+                .then(res => res.json())
+                .then(data => setNewsData([data.results]))
+                // console.log(newsData)
                 setIsLoading(false)
-            }
+        } catch {
+            // setErrorMessage("Sorry, something has gone wrong")
+            setIsLoading(false)
         }
-        getSectionData()
-    },[section])
+    }
 
     return (
         <>
@@ -33,14 +33,24 @@ const LiveNewsComponent = () => {
                     return (
                         <button 
                             key={section} 
-                            onClick={() => setSection(section)}
+                            onClick={() => {
+                                setSection(section)
+                                handleClick()
+                            }}
                         >
-                                <li>{section}</li>
+                                <li>{section.toUpperCase()}</li>
                         </button>
                     )
                 })}
             </ul>
-            {newsData ? newsData.map(article => console.log(article)) : null}
+            {newsData && !errorMessage ? 
+                newsData.map(data => data.map((article, index) => <LiveNewsArticle article={article} key={index} />)) 
+            : 
+            errorMessage ? 
+                <h3>{errorMessage}</h3>
+            :
+            null
+            }
         </>
     )
 }
