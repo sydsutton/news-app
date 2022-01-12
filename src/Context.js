@@ -9,6 +9,7 @@ const ContextProvider = (props) => {
     const [sectionList, setSectionList] = useState([])
 
     useEffect(() => {
+        let isMounted = true
         try {
             fetch(`https://api.nytimes.com/svc/news/v3/content/section-list.json?api-key=${API_KEY}`)
             .then(res => res.json())
@@ -16,7 +17,7 @@ const ContextProvider = (props) => {
         } catch {
             console.log("error")
         }
-        
+        return () => {isMounted = false}
     }, [])
 
     return (
