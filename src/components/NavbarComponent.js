@@ -12,7 +12,7 @@ const NavbarComponent = () => {
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/top-stories">Top Stories</Link></li>
                 <li><Link to="/most-popular">Most Popular</Link></li>
-                <li><Link to="">Real-Time News</Link></li>
+                <li><Link to="/live-news">Real-Time News</Link></li>
                 <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} />
             </ul>
         </div>
