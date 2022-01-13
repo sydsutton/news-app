@@ -5,7 +5,7 @@ import NewsArticle from "./NewsArticleComponent"
 const LiveNewsComponent = () => {
     const {sectionList, API_KEY} = useContext(Context)
 
-    const [section, setSection] = useState("sunday review")
+    const [section, setSection] = useState("world")
     const [newsData, setNewsData] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [errorMessage, setErrorMessage] = useState("")

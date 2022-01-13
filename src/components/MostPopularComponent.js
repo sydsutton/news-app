@@ -15,6 +15,7 @@ const MostPopularComponent = () => {
             fetch(`https://api.nytimes.com/svc/mostpopular/v2/${type}/${period}.json?api-key=${API_KEY}`)
                 .then(res => res.json())
                 .then(data => {
+                    console.log(data.results)
                     if(isMounted){
                         setNewsData(data.results)
                     }
@@ -40,9 +41,9 @@ const MostPopularComponent = () => {
                 <option value={30}>In the last month</option>
             </select>
             <div>
-                {newsData.map(article => {
+                {newsData.map((article, index) => {
                     return (
-                        <NewsArticle article={article} />
+                        <NewsArticle article={article} key={index} />
                     )
                 })}
             </div>
