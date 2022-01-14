@@ -35,3 +35,7 @@ body{
 .image {
   max-width: 400px;
 }
+
+.justify-content-around {
+  justify-content: space-around;
+}

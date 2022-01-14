@@ -8,6 +8,8 @@ const ContextProvider = (props) => {
 
     const [sectionList, setSectionList] = useState([])
     const [topStories, setTopStories] = useState([])
+    const [searchQuery, setSearchQuery] = useState("")
+    const [searchData, setSearchData] = useState([])
 
     useEffect(() => {
         let isMounted = true
@@ -33,7 +35,7 @@ const ContextProvider = (props) => {
     
 
     return (
-        <Context.Provider value={{sectionList, API_KEY, topStories}}>
+        <Context.Provider value={{sectionList, API_KEY, topStories, searchQuery, setSearchQuery, searchData, setSearchData}}>
             {props.children}
         </Context.Provider>
     )

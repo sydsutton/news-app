@@ -1,19 +1,27 @@
-import React from "react"
+import React, {useContext} from "react"
+import {Context} from "../Context"
 import NewsArticle from "./NewsArticleComponent"
 
-const SearchComponent = ({searchData}) => {
+const SearchComponent = () => {
+
+    const {searchData, searchQuery} = useContext(Context)
+
+    console.log(searchData)
 
     return (
         <div>
-            <h2>Search</h2>
-            {/* {searchData.map(article => {
+            <h2>Search {searchQuery ? `results for ${searchQuery}` : null }</h2>
+            {searchData.length !== 0 ? searchData[0].map((article, index) => {
                 return (
-                    <div>
-                        <NewsArticle article={article} />
-                        <p>hello</p>
+                    <div key={index}>
+                        {/* <NewsArticle article={article} /> */}
+                        <p>{article.headline.main}</p>
                     </div>
                 )
-            })} */}
+            })
+        :
+        null
+        }
         </div>
     )
 }

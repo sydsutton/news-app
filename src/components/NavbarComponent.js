@@ -1,56 +1,52 @@
-import React, {useState, useEffect, useContext} from "react"
+import React, {useState, useContext} from "react"
 import {Context} from "../Context"
-import Search from "./SearchComponent"
-import {Link, Routes, Route} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 
 const NavbarComponent = () => {
-    const {API_KEY} = useContext(Context)
-
-    const [search, setSearch] = useState("")
-    const [query, setQuery] = useState("")
-    const [searchData, setSearchData] = useState()
-
-    useEffect(() => {
-        let isMounted = true
-        try {
-            fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${query}&api-key=${API_KEY}`)
-                .then(res => res.json())
-                .then(data => {
-                    if(isMounted){
-                        setSearchData([data.response.docs])
-                    }
-                })
-        } catch {
-            console.log("error")
-        }
-
-        return () => {isMounted = false}
-    }, [query])
+    const [tempSearch,  setTempSearch] = useState("")
+    //I used a temporary search variable so that the search page would not update
+    //the search query with every key stroke.
+    const {API_KEY, setSearchQuery, setSearchData} = useContext(Context)
+    const navigate = useNavigate()
 
     const handleClick = (e) => {
+
         e.preventDefault()
-        setQuery(search)
+        setSearchQuery(tempSearch)
+
+        async function getSearchData() {
+            try {
+                await fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${tempSearch}&api-key=${API_KEY}`)
+                     .then(res => res.json())
+                     .then(data => {
+                         setSearchData([data.response.docs])
+                     })
+             } catch {
+                 console.log("error")
+             }
+        }
+
+        getSearchData()
     }
 
     return (
         <div>
-            <ul className="list-unstyled d-flex">
+            <ul className="list-unstyled d-flex justify-content-around">
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/top-stories">Top Stories</Link></li>
                 <li><Link to="/most-popular">Most Popular</Link></li>
                 <li><Link to="/live-news">Real-Time News</Link></li>
                 <li>
-                    <Link to="/search">
-                        <form>
-                            <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} />
-                            <button type="submit" onClick={(e) => handleClick(e)}>Search</button>
-                        </form>
-                    </Link>
+                    <input type="text" value={tempSearch} onChange={e => setTempSearch(e.target.value)} />
+                    <button 
+                        type="submit" 
+                        onClick={e => {
+                            navigate("search")
+                            handleClick(e)}}>
+                        Search
+                    </button>
                 </li>
             </ul>
-            <Routes>
-                <Route exact path="/search" element={<Search searchData={searchData} />} />
-            </Routes>
         </div>
     )
 }
