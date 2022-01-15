@@ -10,13 +10,18 @@ const ContextProvider = (props) => {
     const [topStories, setTopStories] = useState([])
     const [searchQuery, setSearchQuery] = useState("")
     const [searchData, setSearchData] = useState([])
+    const [errorMessage, setErrorMessage] = useState("")
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         let isMounted = true
+        setLoading(true)
         try {
             fetch(`https://api.nytimes.com/svc/news/v3/content/section-list.json?api-key=${API_KEY}`)
             .then(res => res.json())
             .then(data => setSectionList(data.results.map(section => section.section)))
+            .catch(error => setErrorMessage(error))
+            setLoading(false)
         } catch {
             console.log("error")
         }
@@ -27,17 +32,21 @@ const ContextProvider = (props) => {
                 .then(data => {
                     setTopStories(data.results)
                 })
+                .catch(error => setErrorMessage(error))
+                setLoading(false)
         } catch {
             console.log("error")
         }
-
+        setLoading(false)
         return () => {isMounted = false}
     }, [])
 
     
 
     return (
-        <Context.Provider value={{sectionList, API_KEY, topStories, searchQuery, setSearchQuery, searchData, setSearchData}}>
+        <Context.Provider value={{
+            sectionList, API_KEY, topStories, searchQuery, setSearchQuery, searchData, setSearchData, errorMessage, setErrorMessage, loading, setLoading
+        }}>
             {props.children}
         </Context.Provider>
     )

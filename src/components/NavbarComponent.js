@@ -6,24 +6,28 @@ const NavbarComponent = () => {
     const [tempSearch,  setTempSearch] = useState("")
     //I used a temporary search variable so that the search page would not update
     //the search query with every key stroke.
-    const {API_KEY, setSearchQuery, setSearchData} = useContext(Context)
+    const {API_KEY, setSearchQuery, setSearchData, setErrorMessage, loading, setLoading} = useContext(Context)
     const navigate = useNavigate()
 
     const handleClick = (e) => {
-
         e.preventDefault()
         setSearchQuery(tempSearch)
-
+        setLoading(true)
+        setSearchData([])
         async function getSearchData() {
             try {
                 await fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${tempSearch}&api-key=${API_KEY}`)
                      .then(res => res.json())
                      .then(data => {
-                         setSearchData([data.response.docs])
+                        
+                         setSearchData(data.response.docs)
                      })
+                     .catch(error => setErrorMessage(error))
+                     setLoading(false)
              } catch {
                  console.log("error")
              }
+            setLoading(false)
         }
 
         getSearchData()
@@ -38,8 +42,7 @@ const NavbarComponent = () => {
         <nav>
             <ul className="list-unstyled d-flex justify-content-around">
                 <div className="d-flex justify-content-between">
-                    <li className="nav-list-item"><Link to="/">Home</Link></li>
-                    <li className="nav-list-item"><Link to="/top-stories">Top Stories</Link></li>
+                    <li className="nav-list-item"><Link to="/">Top Stories</Link></li>
                     <li className="nav-list-item"><Link to="/most-popular">Most Popular</Link></li>
                     <li className="nav-list-item"><Link to="/live-news">Real-Time News</Link></li>
                     <li className="toggle-collapse" onClick={() => handleToggle()}>X</li>

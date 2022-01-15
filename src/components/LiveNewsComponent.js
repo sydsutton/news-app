@@ -3,30 +3,30 @@ import {Context} from "../Context"
 import NewsArticle from "./NewsArticleComponent"
 
 const LiveNewsComponent = () => {
-    const {sectionList, API_KEY} = useContext(Context)
+    const {sectionList, API_KEY, loading, setLoading} = useContext(Context)
 
     const [section, setSection] = useState("world")
     const [newsData, setNewsData] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
     const [errorMessage, setErrorMessage] = useState("")
 
     useEffect(() => {
         let isMounted = true
-
+        setNewsData([])
         async function getData(){
 
             let isMounted = true
-            setIsLoading(true)
+            setLoading(true)
 
             await fetch(`https://api.nytimes.com/svc/news/v3/content/nyt/${section}.json?api-key=${API_KEY}`)
                 .then(res => res.json())
                 .then(data => {
+                    // console.log(data)
                     if(isMounted){
                         setNewsData([data.results])
                     } 
                 })
                 .catch(error => console.log(error))
-                setIsLoading(false)
+                setLoading(false)
         }
         getData()
 
@@ -37,7 +37,6 @@ const LiveNewsComponent = () => {
     return (
         <>
             <h1 className="center">Live News Sections</h1>
-            <p>{isLoading ? "Loading" : null}</p>
             <ul className="list-unstyled center">
                 {sectionList.map(section => {
                     return (
@@ -50,6 +49,7 @@ const LiveNewsComponent = () => {
                     )
                 })}
             </ul>
+            <p>{loading ? "Loading" : null}</p>
             <div className="center d-flex">
                 {newsData && !errorMessage ? 
                     newsData.map(data => data.map((article, index) => 

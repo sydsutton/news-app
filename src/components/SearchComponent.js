@@ -4,23 +4,26 @@ import NewsArticle from "./NewsArticleComponent"
 
 const SearchComponent = () => {
 
-    const {searchData, searchQuery} = useContext(Context)
+    const {searchData, searchQuery, loading} = useContext(Context)
 
     return (
-        <div>
-            <h2>Search {searchQuery ? `results for ${searchQuery}` : null }</h2>
-            {searchData.length !== 0 ? searchData[0].map((article, index) => {
-                return (
-                    <div key={index}>
-                        <NewsArticle article={article} />
-                        <p>{article.headline.main}</p>
-                    </div>
-                )
-            })
-        :
-        null
-        }
-        </div>
+        <>
+            <h2>Search {searchQuery ? `results for ${searchQuery.toUpperCase()}` : null }</h2>
+            {loading ? "loading..." : null}
+            <div className="d-flex">
+                {searchData ? searchData.map((article, index) => {
+                    // console.log(index)
+                    return (
+                        <div key={index} className="max-width">
+                            <NewsArticle article={article} />
+                        </div>
+                    )
+                })
+                :
+                null
+            }
+            </div>
+        </>
     )
 }
 

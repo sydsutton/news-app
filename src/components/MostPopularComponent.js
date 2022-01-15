@@ -3,27 +3,30 @@ import {Context} from "../Context"
 import NewsArticle from "./NewsArticleComponent"
 
 const MostPopularComponent = () => {
-    const {API_KEY} = useContext(Context)
+    const {API_KEY, loading, setLoading} = useContext(Context)
 
     const [type, setType] = useState("shared")
     const [period, setPeriod] = useState(1)
     const [newsData, setNewsData] = useState([])
 
     useEffect(() => {
+        setNewsData([])
+        setLoading(true)
         let isMounted = true
         try {
             fetch(`https://api.nytimes.com/svc/mostpopular/v2/${type}/${period}.json?api-key=${API_KEY}`)
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data.results)
+                    // console.log(data.results)
                     if(isMounted){
                         setNewsData(data.results)
+                        setLoading(false)
                     }
                 })
         } catch {
             console.log("error")
+            setLoading(false)
         }
-
         return () => {isMounted = false}
     }, [type, period])
 
@@ -40,11 +43,16 @@ const MostPopularComponent = () => {
                 <option value={7}>In the last week</option>
                 <option value={30}>In the last month</option>
             </select>
-            <div>
+
+            <p>{loading ? "loading... " : null}</p>
+
+            <div className="d-flex">
                 {newsData.filter(article => article.media.length >= 1).map((article, index) => {
-                    console.log(article)
+                    // console.log(article)
                     return (
-                        <NewsArticle article={article} key={index} />
+                        <div className="max-width">
+                            <NewsArticle article={article} key={index} />
+                        </div>
                     )
                 })}
             </div>

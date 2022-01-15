@@ -5,6 +5,7 @@ import NewsArticle from "./NewsArticleComponent"
 const TopStoriesComponent = () => {
 
     const {topStories} = useContext(Context)
+    
     return (
         <div className="center">
             <h1>Top Stories</h1>
