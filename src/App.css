@@ -39,3 +39,24 @@ body{
 .justify-content-around {
   justify-content: space-around;
 }
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.toggle-collapse {
+  display: none;
+}
+
+@media (max-width: 600px){
+  .nav-list-item { 
+    display: none;
+  }
+
+  .toggle-collapse {
+    display: block;
+    float: right;
+    flex: unset;
+  }
+
+}

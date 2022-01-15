@@ -24,7 +24,9 @@ const ContextProvider = (props) => {
         try {
             fetch(`https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${API_KEY}`)
                 .then(res => res.json())
-                .then(data => setTopStories(data.results))
+                .then(data => {
+                    setTopStories(data.results)
+                })
         } catch {
             console.log("error")
         }

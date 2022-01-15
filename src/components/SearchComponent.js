@@ -6,15 +6,13 @@ const SearchComponent = () => {
 
     const {searchData, searchQuery} = useContext(Context)
 
-    console.log(searchData)
-
     return (
         <div>
             <h2>Search {searchQuery ? `results for ${searchQuery}` : null }</h2>
             {searchData.length !== 0 ? searchData[0].map((article, index) => {
                 return (
                     <div key={index}>
-                        {/* <NewsArticle article={article} /> */}
+                        <NewsArticle article={article} />
                         <p>{article.headline.main}</p>
                     </div>
                 )

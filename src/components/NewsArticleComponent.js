@@ -3,40 +3,32 @@ import { Link } from "react-router-dom"
 
 const NewsArticleComponent = ({article}) => {
 
-    const {title, abstract, multimedia} = article
-    
+    const {title, abstract, multimedia, media} = article
+
     // I used a ternary at the beginning of the return because I only wanted to show
     // articles that have pictures associated with them
+
     return (
         <>
-        { title && !multimedia ? 
-            <>
-                <Link to="">
-                    <h2>{title}</h2>
-                    <p>{abstract}</p>
-                </Link>
-            </>
-        :
-        multimedia && multimedia.length > 3 && title ? 
-                <>
-                    <Link to="">
-                        <img src={multimedia[2].url} alt={multimedia.caption} />
-                        <h2>{title}</h2>
-                        <p>{abstract}</p>
-                    </Link>
-                </>
-            :
-            multimedia.length < 2 ? 
-                <>
-                    <Link to="">
-                        <img className="image"src={multimedia[0].url} alt={multimedia.caption} />
-                        <h2>{title}</h2>
-                        <p>{abstract}</p>
-                    </Link>
-                </>
-            :
-        null
-        }    
+            <Link to="">
+                {
+                !multimedia ? 
+                <img src="https://nytimesineducation.com/wp-content/themes/nyt-project-x/images/placeholder.jpg" className="image" /> :
+                media ? 
+                    <img src={media[0]["media-metadata"][2].url} /> : 
+                multimedia.length === 1 ? 
+                    <img src={multimedia[0].url} className="image" /> :
+                multimedia.length < 70 ? 
+                    <img src={multimedia[2].url} /> :
+                multimedia.length > 20 ? 
+                    <img src={`https://static01.nyt.com/${multimedia[5].url}`}/>  :
+                multimedia ?
+                    <img src={multimedia[0].url} className="image" /> :
+                    null
+                } 
+                <h2>{title}</h2>
+                <p>{abstract}</p>
+            </Link>
         </>
     )
     

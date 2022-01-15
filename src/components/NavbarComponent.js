@@ -29,13 +29,21 @@ const NavbarComponent = () => {
         getSearchData()
     }
 
+    const handleToggle = () => {
+        console.log("toggled")
+        // document.getElementsByClassName('nav-list-item').display = "block"
+    }
+
     return (
-        <div>
+        <nav>
             <ul className="list-unstyled d-flex justify-content-around">
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/top-stories">Top Stories</Link></li>
-                <li><Link to="/most-popular">Most Popular</Link></li>
-                <li><Link to="/live-news">Real-Time News</Link></li>
+                <div className="d-flex justify-content-between">
+                    <li className="nav-list-item"><Link to="/">Home</Link></li>
+                    <li className="nav-list-item"><Link to="/top-stories">Top Stories</Link></li>
+                    <li className="nav-list-item"><Link to="/most-popular">Most Popular</Link></li>
+                    <li className="nav-list-item"><Link to="/live-news">Real-Time News</Link></li>
+                    <li className="toggle-collapse" onClick={() => handleToggle()}>X</li>
+                </div>
                 <li>
                     <input type="text" value={tempSearch} onChange={e => setTempSearch(e.target.value)} />
                     <button 
@@ -47,7 +55,7 @@ const NavbarComponent = () => {
                     </button>
                 </li>
             </ul>
-        </div>
+        </nav>
     )
 }
 

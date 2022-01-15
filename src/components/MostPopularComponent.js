@@ -41,7 +41,8 @@ const MostPopularComponent = () => {
                 <option value={30}>In the last month</option>
             </select>
             <div>
-                {newsData.map((article, index) => {
+                {newsData.filter(article => article.media.length >= 1).map((article, index) => {
+                    console.log(article)
                     return (
                         <NewsArticle article={article} key={index} />
                     )
@@ -52,3 +53,26 @@ const MostPopularComponent = () => {
 }
 
 export default MostPopularComponent
+
+// abstract: "Marilyn Mosby, the state’s attorney for Baltimore City, is accused of lying about pandemic hardships to withdraw retirement funds and of making false statements in her mortgage applications to buy two Florida vacation homes."
+// adx_keywords: "Perjury;Pensions and Retirement Plans;Mortgages;Frauds and Swindling;District Attorneys;Mosby, Marilyn J (1980- );Baltimore (Md)"
+// asset_id: 100000008159007
+// byline: "By Alyssa Lukpat and Christine Chung"
+// column: null
+// x des_facet: (5) ['Perjury', 'Pensions and Retirement Plans', 'Mortgages', 'Frauds and Swindling', 'District Attorneys']
+// eta_id: 0
+// x geo_facet: ['Baltimore (Md)']
+// id: 100000008159007
+// x media: [{…}]
+// nytdsection: "u.s."
+// x org_facet: []
+// x per_facet: ['Mosby, Marilyn J (1980- )']
+// published_date: "2022-01-13"
+// section: "U.S."
+// source: "New York Times"
+// subsection: ""
+// title: "Baltimore Prosecutor Charged With Perjury and Filing False Loan Applications"
+// type: "Article"
+// updated: "2022-01-14 11:04:50"
+// uri: "nyt://article/283b5acf-0fca-5df9-abb4-b8ed0e8bad43"
+// url: "https://www.nytimes.com/2022/01/13/us/marilyn-mosby-baltimore-charged.html"
