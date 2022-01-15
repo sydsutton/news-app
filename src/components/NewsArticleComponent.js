@@ -11,7 +11,7 @@ const NewsArticleComponent = ({article}) => {
     // console.log(article)
     return (
         <>
-            <Link to="">
+            <Link to="" className="text-decoration-none">
                 <h2>{title ? title : headline ? headline.main : null}</h2>
                 {
                 media ? 

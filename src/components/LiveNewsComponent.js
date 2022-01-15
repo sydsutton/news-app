@@ -53,7 +53,7 @@ const LiveNewsComponent = () => {
             <div className="center d-flex">
                 {newsData && !errorMessage ? 
                     newsData.map(data => data.map((article, index) => 
-                        <div className="max-width" key={index}>
+                        <div className="max-width card" key={index}>
                             <NewsArticle article={article} />
                         </div>
                     )) 

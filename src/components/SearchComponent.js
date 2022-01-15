@@ -8,13 +8,12 @@ const SearchComponent = () => {
 
     return (
         <>
-            <h2>Search {searchQuery ? `results for ${searchQuery.toUpperCase()}` : null }</h2>
+            <h2 className="small">SEARCH {searchQuery ? `RESULTS FOR ${searchQuery.toUpperCase()}` : null }</h2>
             {loading ? "loading..." : null}
             <div className="d-flex">
                 {searchData ? searchData.map((article, index) => {
-                    // console.log(index)
                     return (
-                        <div key={index} className="max-width">
+                        <div key={index} className="max-width card">
                             <NewsArticle article={article} />
                         </div>
                     )

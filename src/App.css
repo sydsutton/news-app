@@ -2,10 +2,19 @@ body{
   margin: 0;
   padding: 0;
   background: burlywood;
+  min-width: 100vw;
 }
 
 * {
   box-sizing: border-box;
+}
+
+html {
+  font-family: 'Raleway', sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Cinzel Decorative', cursive;
 }
 
 .app {
@@ -48,7 +57,23 @@ body{
   display: none;
 }
 
-@media (max-width: 600px){
+.card {
+  background: rgb(238, 232, 232);
+  margin: 1rem;
+  padding: .5rem;
+  border-radius: 50px 10px 50px 10px;
+}
+
+.text-decoration-none {
+  text-decoration: none;
+  color: rgb(29, 28, 28);
+}
+
+.small {
+  font-size: .9rem;
+}
+
+/* @media (max-width: 600px){
   .nav-list-item { 
     display: none;
   }
@@ -59,4 +84,4 @@ body{
     flex: unset;
   }
 
-}
+} */
