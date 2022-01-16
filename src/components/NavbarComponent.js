@@ -17,16 +17,16 @@ const NavbarComponent = () => {
         async function getSearchData() {
             try {
                 await fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${tempSearch}&api-key=${API_KEY}`)
-                     .then(res => res.json())
-                     .then(data => {
-                        
-                         setSearchData(data.response.docs)
-                     })
-                     .catch(error => setErrorMessage(error))
-                     setLoading(false)
-             } catch {
-                 console.log("error")
-             }
+                        .then(res => res.json())
+                        .then(data => {
+                            setSearchData(data.response.docs)
+                        })
+                        .catch(error => setErrorMessage(error))
+                        // setSearchData([])
+                        setLoading(false)
+                } catch {
+                    console.log("error")
+                }
             setLoading(false)
         }
 
@@ -51,8 +51,10 @@ const NavbarComponent = () => {
                         <button 
                             type="submit" 
                             onClick={e => {
-                                navigate("search")
-                                handleClick(e)}}>
+                                navigate("search") 
+                                handleClick(e) 
+                            }}
+                            >
                             Search
                         </button>
                     </li>

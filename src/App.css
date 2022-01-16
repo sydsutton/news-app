@@ -1,8 +1,9 @@
 body{
   margin: 0;
   padding: 0;
-  background: rgb(71, 131, 134);
-  min-width: 100vw;
+  background-image: linear-gradient(35deg, rgb(48, 77, 78), rgb(205, 231, 223));
+  max-width: 100vw;
+  min-height: 100vh;
 }
 
 * {
@@ -19,6 +20,16 @@ h1, h2, h3, h4 {
 
 .app {
   text-align: center;
+}
+
+nav {
+  height: 5rem;
+  border: 1px solid;
+  align-items: center;
+}
+
+.nav-list-item {
+  height: 100%;
 }
 
 .list-unstyled {
@@ -42,10 +53,14 @@ h1, h2, h3, h4 {
   width: 100%;
 }
 
-.image {
-  max-width: 300px;
+.rounded {
   border-radius: 50px 10px 50px 10px;
+}
 
+.image {
+  width: 300px;
+  transition: 200ms ease-in-out ;
+  margin: 1rem 0;
 }
 
 .justify-content-around {
@@ -64,7 +79,7 @@ h1, h2, h3, h4 {
   background: rgb(238, 232, 232);
   margin: 1rem;
   padding: 1rem;
-  border-radius: 50px 10px 50px 10px;
+  transition: 200ms ease-in-out ;
 }
 
 .text-decoration-none {
@@ -85,7 +100,9 @@ h1, h2, h3, h4 {
 }
 
 .subject-container {
-  max-width: 60rem;
+  margin-top: 2rem;
+  max-width: 50rem;
+  padding: 0;
 }
 
 .list-item {
@@ -96,7 +113,7 @@ h1, h2, h3, h4 {
 }
 
 .shadow {
-  box-shadow: 5px 5px 5px rgba(0,0,0,.06);
+  box-shadow: 1px 1px 5px rgba(0,0,0,.06);
 }
 
 .flex-row {
@@ -104,4 +121,43 @@ h1, h2, h3, h4 {
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.float-right {
+  margin-left: auto;
+  margin-right: .6rem;
+}
+
+.line-height {
+  line-height: 1.4;
+}
+
+.letter-spacing {
+  letter-spacing: .08em;
+}
+
+.card:hover,
+.list-item:hover {
+  background-image: linear-gradient(320deg, rgb(194, 223, 208), rgb(226, 240, 232));
+  transform: scale(1.02);
+  box-shadow: 1px 1px 5px rgba(0,0,0,.09);
+}
+
+.card:hover .image {
+  transform: scale(1.2);
+  border-radius: 10px 50px 10px 50px;
+  box-shadow: 5px 5px 5px rgba(0,0,0,.06);
+}
+
+.nav-list-item:hover {
+  background:rgb(29, 28, 28);
+  color:rgb(189, 224, 219);
 }
