@@ -6,7 +6,7 @@ const NavbarComponent = () => {
     const [tempSearch,  setTempSearch] = useState("")
     //I used a temporary search variable so that the search page would not update
     //the search query with every key stroke.
-    const {API_KEY, setSearchQuery, setSearchData, setErrorMessage, loading, setLoading} = useContext(Context)
+    const {API_KEY, setSearchQuery, setSearchData, setErrorMessage, loading, setLoading, handleToggle} = useContext(Context)
     const navigate = useNavigate()
 
     const handleClick = (e) => {
@@ -31,11 +31,6 @@ const NavbarComponent = () => {
         }
 
         getSearchData()
-    }
-
-    const handleToggle = () => {
-        console.log("toggled")
-        // document.getElementsByClassName('nav-list-item').display = "block"
     }
 
     return (

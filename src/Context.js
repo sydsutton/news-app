@@ -41,11 +41,15 @@ const ContextProvider = (props) => {
         return () => {isMounted = false}
     }, [])
 
+    const handleToggle = () => {
+        console.log("hello")
+    }
+
     
 
     return (
         <Context.Provider value={{
-            sectionList, API_KEY, topStories, searchQuery, setSearchQuery, searchData, setSearchData, errorMessage, setErrorMessage, loading, setLoading
+            sectionList, API_KEY, topStories, searchQuery, setSearchQuery, searchData, setSearchData, errorMessage, setErrorMessage, loading, setLoading, handleToggle
         }}>
             {props.children}
         </Context.Provider>
