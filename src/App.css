@@ -34,6 +34,7 @@ nav {
   z-index: 20;
   background:rgb(173, 220, 243);
   letter-spacing: .1em;
+  padding-left: 3rem;
 }
 
 .nav-list-item {
@@ -196,6 +197,13 @@ select{
   border-radius: 10px 5px 10px 5px;
   padding: .5rem;
   font-weight: bold;
+}
+
+.logo {
+  height: 60px;
+  position: absolute;
+  top: 0;
+  left: 2rem;
 }
 
 .search-button:hover {

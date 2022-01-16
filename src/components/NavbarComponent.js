@@ -1,4 +1,10 @@
 import React, {useState, useContext} from "react"
+import logo from "../images/logo.png"
+import {
+    Navbar,
+    Container
+} from "react-bootstrap"
+
 import {Context} from "../Context"
 import {Link, useNavigate} from "react-router-dom"
 
@@ -17,7 +23,12 @@ const NavbarComponent = () => {
         async function getSearchData() {
             try {
                 await fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${tempSearch}&api-key=${API_KEY}`)
-                        .then(res => res.json())
+                        .then(res => {
+                            if (res.status >= 200 && res.status <= 299) {
+                                return res.json();
+                              } else {
+                                throw Error(res.statusText);
+                        }})
                         .then(data => {
                             setSearchData(data.response.docs)
                         })
@@ -35,27 +46,32 @@ const NavbarComponent = () => {
 
     return (
         <nav className="shadow">
-            <ul className="list-unstyled">
-                <div className="flex-row">
-                    <li><Link className="text-decoration-none bold nav-list-item" to="/">Top Stories</Link></li>
-                    <li><Link className="text-decoration-none bold nav-list-item" to="/most-popular">Most Popular</Link></li>
-                    <li><Link className="text-decoration-none bold nav-list-item" to="/live-news">Real-Time News</Link></li>
-                    <li className="toggle-collapse" onClick={() => handleToggle()}>X</li>
-                    <li>
-                        <input className="shadow" type="text" value={tempSearch} onChange={e => setTempSearch(e.target.value)} />
-                        <button 
-                            className="search-button bold"
-                            type="submit" 
-                            onClick={e => {
-                                navigate("search") 
-                                handleClick(e) 
-                            }}
-                            >
-                            Search
-                        </button>
-                    </li>
-                </div>
-            </ul>
+            <Navbar>
+                <Container>
+                    <ul className="list-unstyled">
+                        <div className="flex-row">
+                            <Navbar.Brand href="/"><img src={logo} className="logo" /></Navbar.Brand>
+                            <li>
+                                <input className="shadow" type="text" value={tempSearch} onChange={e => setTempSearch(e.target.value)} />
+                                <button 
+                                    className="search-button bold"
+                                    type="submit" 
+                                    onClick={e => {
+                                        navigate("search") 
+                                        handleClick(e) 
+                                    }}
+                                    >
+                                    Search
+                                </button>
+                            </li>
+                            <li><Link className="text-decoration-none bold nav-list-item" to="/">Top Stories</Link></li>
+                            <li><Link className="text-decoration-none bold nav-list-item" to="/most-popular">Most Popular</Link></li>
+                            <li><Link className="text-decoration-none bold nav-list-item" to="/live-news">Real-Time News</Link></li>
+                            <li className="toggle-collapse" onClick={() => handleToggle()}>X</li>
+                        </div>
+                    </ul>
+                </Container>
+            </Navbar>
         </nav>
     )
 }
