@@ -9,6 +9,7 @@ const TopStoriesComponent = () => {
     return (
         <div className="center">
             <h1 className="letter-spacing">Top Stories</h1>
+            <hr className="hr"/>
             {loading ? "loading..." : null}
             <div className="d-flex">
                 {topStories.map((article, index) => {

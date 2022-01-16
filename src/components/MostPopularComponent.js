@@ -33,6 +33,7 @@ const MostPopularComponent = () => {
     return (
         <>
             <h1>Most Popular</h1>
+            <hr className="hr"/>
             <select onChange={e => setType(e.target.value)}>
                 <option value="shared">The most shared articles</option>
                 <option value="emailed">The most emailed articles</option>

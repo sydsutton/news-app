@@ -37,6 +37,7 @@ const LiveNewsComponent = () => {
     return (
         <>
             <h1 className="center">Live News Sections</h1>
+            <hr className="hr"/>
             <ul className="list-unstyled center subject-container">
                 {sectionList.map(section => {
                     return (

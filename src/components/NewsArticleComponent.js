@@ -9,7 +9,7 @@ const NewsArticleComponent = ({article}) => {
         <>
             <Link to="" className="text-decoration-none flex-col">
                 <h2 className="letter-spacing">{title ? title : headline ? headline.main : null}</h2>
-                <p className="date">{pub_date ? `Published on ${pub_date.slice(0, 10)}` : updated ? `Updated on ${updated.slice(0, 10)} ` : created_date ? `Created on ${created_date.slice(0, 10)}` :  null}</p>
+                <p className="small">{pub_date ? `Published on ${pub_date.slice(0, 10)}` : updated ? `Updated on ${updated.slice(0, 10)} ` : created_date ? `Created on ${created_date.slice(0, 10)}` :  null}</p>
                 {
                 media ? 
                     <img src={media[0]["media-metadata"][2].url} className="image rounded shadow" /> : 

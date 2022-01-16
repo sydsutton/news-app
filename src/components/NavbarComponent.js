@@ -25,7 +25,7 @@ const NavbarComponent = () => {
                         // setSearchData([])
                         setLoading(false)
                 } catch {
-                    console.log("error")
+                    setSearchData([])
                 }
             setLoading(false)
         }
@@ -39,16 +39,17 @@ const NavbarComponent = () => {
     }
 
     return (
-        <nav>
+        <nav className="shadow">
             <ul className="list-unstyled">
                 <div className="flex-row">
-                    <li className="nav-list-item"><Link className="text-decoration-none bold" to="/">Top Stories</Link></li>
-                    <li className="nav-list-item"><Link className="text-decoration-none bold" to="/most-popular">Most Popular</Link></li>
-                    <li className="nav-list-item"><Link className="text-decoration-none bold" to="/live-news">Real-Time News</Link></li>
+                    <li><Link className="text-decoration-none bold nav-list-item" to="/">Top Stories</Link></li>
+                    <li><Link className="text-decoration-none bold nav-list-item" to="/most-popular">Most Popular</Link></li>
+                    <li><Link className="text-decoration-none bold nav-list-item" to="/live-news">Real-Time News</Link></li>
                     <li className="toggle-collapse" onClick={() => handleToggle()}>X</li>
                     <li>
-                        <input type="text" value={tempSearch} onChange={e => setTempSearch(e.target.value)} />
+                        <input className="shadow" type="text" value={tempSearch} onChange={e => setTempSearch(e.target.value)} />
                         <button 
+                            className="search-button bold"
                             type="submit" 
                             onClick={e => {
                                 navigate("search") 
