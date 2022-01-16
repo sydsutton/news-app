@@ -1,7 +1,7 @@
 body{
   margin: 0;
   padding: 0;
-  background: burlywood;
+  background: rgb(71, 131, 134);
   min-width: 100vw;
 }
 
@@ -14,7 +14,7 @@ html {
 }
 
 h1, h2, h3, h4 {
-  font-family: 'Cinzel Decorative', cursive;
+  font-family: 'Bebas Neue', cursive;
 }
 
 .app {
@@ -27,6 +27,7 @@ h1, h2, h3, h4 {
 
 .center {
   text-align: center;
+  margin: 0 auto;
 }
 
 .d-flex {
@@ -37,12 +38,14 @@ h1, h2, h3, h4 {
 }
 
 .max-width {
-  max-width: 30rem;
+  max-width: 25rem;
   width: 100%;
 }
 
 .image {
-  max-width: 400px;
+  max-width: 300px;
+  border-radius: 50px 10px 50px 10px;
+
 }
 
 .justify-content-around {
@@ -60,7 +63,7 @@ h1, h2, h3, h4 {
 .card {
   background: rgb(238, 232, 232);
   margin: 1rem;
-  padding: .5rem;
+  padding: 1rem;
   border-radius: 50px 10px 50px 10px;
 }
 
@@ -73,15 +76,32 @@ h1, h2, h3, h4 {
   font-size: .9rem;
 }
 
-/* @media (max-width: 600px){
-  .nav-list-item { 
-    display: none;
-  }
+.bold {
+  font-weight: bold;
+}
 
-  .toggle-collapse {
-    display: block;
-    float: right;
-    flex: unset;
-  }
+.lower-case {
+  text-transform: lowercase;
+}
 
-} */
+.subject-container {
+  max-width: 60rem;
+}
+
+.list-item {
+  margin: .2rem;
+  border-radius: 10px 5px 10px 5px;
+  padding: .3rem .8rem;
+  border: none;
+}
+
+.shadow {
+  box-shadow: 5px 5px 5px rgba(0,0,0,.06);
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}

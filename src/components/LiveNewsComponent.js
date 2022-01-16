@@ -37,10 +37,11 @@ const LiveNewsComponent = () => {
     return (
         <>
             <h1 className="center">Live News Sections</h1>
-            <ul className="list-unstyled center">
+            <ul className="list-unstyled center subject-container">
                 {sectionList.map(section => {
                     return (
                         <button 
+                            className="list-item shadow"
                             key={section} 
                             onClick={() => setSection(section)}
                         >
@@ -53,7 +54,7 @@ const LiveNewsComponent = () => {
             <div className="center d-flex">
                 {newsData && !errorMessage ? 
                     newsData.map(data => data.map((article, index) => 
-                        <div className="max-width card" key={index}>
+                        <div className="max-width card shadow" key={index}>
                             <NewsArticle article={article} />
                         </div>
                     )) 

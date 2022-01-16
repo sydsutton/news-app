@@ -40,23 +40,23 @@ const NavbarComponent = () => {
 
     return (
         <nav>
-            <ul className="list-unstyled d-flex justify-content-around">
-                <div className="d-flex justify-content-between">
-                    <li className="nav-list-item"><Link to="/">Top Stories</Link></li>
-                    <li className="nav-list-item"><Link to="/most-popular">Most Popular</Link></li>
-                    <li className="nav-list-item"><Link to="/live-news">Real-Time News</Link></li>
+            <ul className="list-unstyled">
+                <div className="flex-row">
+                    <li className="nav-list-item"><Link className="text-decoration-none bold" to="/">Top Stories</Link></li>
+                    <li className="nav-list-item"><Link className="text-decoration-none bold" to="/most-popular">Most Popular</Link></li>
+                    <li className="nav-list-item"><Link className="text-decoration-none bold" to="/live-news">Real-Time News</Link></li>
                     <li className="toggle-collapse" onClick={() => handleToggle()}>X</li>
+                    <li>
+                        <input type="text" value={tempSearch} onChange={e => setTempSearch(e.target.value)} />
+                        <button 
+                            type="submit" 
+                            onClick={e => {
+                                navigate("search")
+                                handleClick(e)}}>
+                            Search
+                        </button>
+                    </li>
                 </div>
-                <li>
-                    <input type="text" value={tempSearch} onChange={e => setTempSearch(e.target.value)} />
-                    <button 
-                        type="submit" 
-                        onClick={e => {
-                            navigate("search")
-                            handleClick(e)}}>
-                        Search
-                    </button>
-                </li>
             </ul>
         </nav>
     )
