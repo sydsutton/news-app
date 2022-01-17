@@ -7,7 +7,9 @@ import {Link, useNavigate} from "react-router-dom"
 const NavbarComponent = (props) => {
     const [tempSearch,  setTempSearch] = useState("")
     const [navOpen, setNavOpen] = useState(false)
-    const [active, setActive] = useState("")
+    const [topStoriesActive, setTopStoriesActive] = useState(false)
+    const [mostPopularActive, setMostPopularActive] = useState(false)
+    const [liveNewsActive, setLiveNewsActive] = useState(false)
 
     //I used a temporary search variable so that the search page would not update
     //the search query with every key stroke.
@@ -43,7 +45,6 @@ const NavbarComponent = (props) => {
         getSearchData()
     }
 
-
     return (
         <Navbar className="nav-bg mb-4 my-shadow" fixed="top" expand="lg" sticky="top">
             <Navbar.Brand href="/"><img src={logo} className="logo" /></Navbar.Brand>
@@ -56,24 +57,60 @@ const NavbarComponent = (props) => {
                         onClick={e => {
                             navigate("search") 
                             handleClick(e) 
+                            setTopStoriesActive(false)
+                            setMostPopularActive(false)
+                            setLiveNewsActive(false)
                         }}
                         >
                         Search
                     </button>
                 </form>
             </div>
-            <Navbar.Toggle onClick={() => setNavOpen(!navOpen)}/>
+            <Navbar.Toggle className="toggle-icon" onClick={() => setNavOpen(!navOpen)}/>
             <Navbar.Collapse isOpen={navOpen} className="nav-bg">
-                <Nav  activeKey={active ? active : "/"} onSelect={(key) => setActive(key)}>
-                    <Nav.Item>
-                        <Link to="/"><Nav.Link eventKey="/" className="nav-list-item float-right">Top Stories</Nav.Link></Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Link to="/most-popular"><Nav.Link eventKey="/most-popular" className="nav-list-item float-right">Most Popular</Nav.Link></Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Link to="/live-news"><Nav.Link eventKey="/live-news" className="nav-list-item float-right">Real-Time News</Nav.Link></Link>
-                    </Nav.Item>
+                <Nav className="nav-collapse">
+                    <Link 
+                        to="/"
+                    >
+                        <div
+                            className={topStoriesActive ? "active nav-list-item" : "nav-list-item"}
+                            onClick={() => {
+                                setTopStoriesActive(true)
+                                setMostPopularActive(false)
+                                setLiveNewsActive(false)
+                            }}
+                        >
+                            Top Stories
+                        </div>
+                    </Link>
+                    <Link 
+                        to="/most-popular"
+                    >
+                        <div
+                            className={mostPopularActive ? "active nav-list-item" : "nav-list-item"}
+                            onClick={() => {
+                                setTopStoriesActive(false)
+                                setMostPopularActive(true)
+                                setLiveNewsActive(false)
+                            }}
+                        >
+                        Most Popular
+                        </div>
+                    </Link>
+                    <Link 
+                        to="/live-news" 
+                    >
+                        <div
+                            className={liveNewsActive ? "active nav-list-item" : "nav-list-item"}
+                            onClick={() => {
+                                setTopStoriesActive(false)
+                                setMostPopularActive(false)
+                                setLiveNewsActive(true)
+                            }}
+                        >
+                            Real-Time News
+                        </div>
+                    </Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

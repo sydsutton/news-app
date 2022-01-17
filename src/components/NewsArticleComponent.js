@@ -4,7 +4,6 @@ const NewsArticleComponent = ({article}) => {
 
     const {title, abstract, multimedia, media, headline, byline, updated, created_date, pub_date, url} = article
 
-
     return (
         <>
             <button onClick={() => window.open(url)} className="text-decoration-none flex-col link-button">

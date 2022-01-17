@@ -24,15 +24,6 @@ h1, h2, h3, h4 {
   text-align: center;
 }
 
-
-.nav-list-item {
-  height: 100%;
-  width: 10rem;
-  padding: 1rem 0;
-  color:rgb(57, 58, 57);
-  width: 100%;
-}
-
 .list-unstyled {
   list-style: none;
 }
@@ -154,6 +145,17 @@ input {
   padding-left: .3rem;
 }
 
+.nav-collapse {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.toggle-icon {
+  margin-right: 1rem;
+}
+
 .search-button {
   padding: .3rem 1rem;
   border: none;
@@ -174,7 +176,7 @@ select {
 }
 
 .custom-width {
-  width: 75%;
+  width: 50%;
 }
 
 .hr {
@@ -192,6 +194,7 @@ select{
 
 .logo {
   height: 50px;
+  margin-left: 1rem;
 }
 
 .search-button:hover {
@@ -206,16 +209,10 @@ select{
   box-shadow: 5px 5px 5px rgba(0,0,0,.15);
 }
 
-.card:hover .image {
+.image:hover {
   transform: scale(1.2);
   border-radius: 10px 50px 10px 50px;
   box-shadow: 5px 5px 5px rgba(0,0,0,.15);
-}
-
-.nav-list-item:hover{
-  background:rgb(51, 50, 50);
-  color:rgb(237, 245, 241);
-  text-decoration: none;
 }
 
 .list-item:hover {
@@ -239,21 +236,34 @@ select{
   cursor: pointer;
 }
 
+.nav-list-item {
+  text-decoration: none;
+  float: right;
+  width: 10rem;
+  height: 100%;
+  border: none;
+  padding: 1.2rem;
+  color:rgb(39, 37, 37);
+  font-weight: bold;
+}
+
+
 .active {
   color:rgb(228, 237, 241);
-  width: 100%;
-  border: 2px solid rgb(44, 44, 44);
+  background-color:rgb(51, 50, 50);
+  padding: 1.2rem;
 }
 
 .nav-bg {
   background-color:rgb(151, 217, 250);
-  padding-top: 0;
-  padding-bottom: 0;
+  padding: 0;
 }
 
-@media (min-width: 200px) and (max-width: 700px) {
+@media (min-width: 200px) and (max-width: 970px) {
   .nav-list-item {
     font-size: .8em;
+    padding: .4rem;
+    width: 100%;
   }
 
   .subject-container {
@@ -281,5 +291,24 @@ select{
   .navbar-toggler-icon {
     width: 20px;
     height: 20px;
+  }
+
+  .nav-collapse {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  select {
+    font-size: .8em;
+  }
+
+  .link-button h2 {
+    font-size: 1.4em;
+  }
+
+  .link-button p {
+    font-size: .8em;
   }
 }
