@@ -49,7 +49,7 @@ const MostPopularComponent = () => {
 
             <div className="d-flex">
                 {newsData.filter(article => article.media.length >= 1).map((article, index) => {
-                    console.log(article)
+                    // console.log(article)
                     return (
                         <div className="max-width card my-shadow rounded-edges" key={index}>
                             <NewsArticle article={article} key={index} />

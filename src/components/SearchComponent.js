@@ -8,7 +8,8 @@ const SearchComponent = () => {
 
     return (
         <>
-            <h2 className="letter-spacing text-light">SEARCH {searchQuery ? `RESULTS FOR ${searchQuery.toUpperCase()}` : null }</h2>
+            <h2 className="letter-spacing">SEARCH {searchQuery ? `RESULTS FOR ${searchQuery.toUpperCase()}` : null }</h2>
+            <hr className="hr"/>
             {loading ? "loading..." : null}
             <div className="d-flex">
                 {searchData ? searchData.map((article, index) => {

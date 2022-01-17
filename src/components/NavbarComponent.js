@@ -4,9 +4,11 @@ import { Navbar, Nav, NavDropdown, Button } from 'react-bootstrap'
 import {Context} from "../Context"
 import {Link, useNavigate} from "react-router-dom"
 
-const NavbarComponent = () => {
+const NavbarComponent = (props) => {
     const [tempSearch,  setTempSearch] = useState("")
     const [navOpen, setNavOpen] = useState(false)
+    const [active, setActive] = useState("")
+
     //I used a temporary search variable so that the search page would not update
     //the search query with every key stroke.
     const {API_KEY, setSearchQuery, setSearchData, setErrorMessage, loading, setLoading, handleToggle} = useContext(Context)
@@ -41,37 +43,12 @@ const NavbarComponent = () => {
         getSearchData()
     }
 
+
     return (
-        // <nav className="my-shadow navbar navbar-expand-lg navbar-light flex-row">
-        //     <div>
-        //         <Link className="navbar-brand" to="/"><img src={logo} className="logo" /></Link>
-        //         <form>
-        //             <input className="my-shadow" type="text" value={tempSearch} onChange={e => setTempSearch(e.target.value)} />
-        //             <button 
-        //                 className="search-button bold"
-        //                 type="submit" 
-        //                 onClick={e => {
-        //                     navigate("search") 
-        //                     handleClick(e) 
-        //                 }}
-        //                 >
-        //                 Search
-        //             </button>
-        //         </form>
-        //         <button className="navbar-toggler" onClick={() => setNavOpen(!navOpen)}>
-        //             <span className="navbar-toggler-icon"></span>
-        //         </button>
-        //         <div className="collapse navbar-collapse" id="navbar" open={navOpen}>
-        //             <Link className="text-decoration-none bold nav-list-item" to="/">Top Stories</Link>
-        //             <Link className="text-decoration-none bold nav-list-item" to="/most-popular">Most Popular</Link>
-        //             <Link className="text-decoration-none bold nav-list-item" to="/live-news">Real-Time News</Link>
-        //         </div>
-        //     </div>
-        // </nav>
-        <Navbar className="bg-dark mb-4" fixed="top" variant="dark" expand="lg" sticky="top">
+        <Navbar className="nav-bg mb-4 my-shadow" fixed="top" expand="lg" sticky="top">
             <Navbar.Brand href="/"><img src={logo} className="logo" /></Navbar.Brand>
-            <div className="mx-auto">
-                <form>
+            <div className="float-right custom-width">
+                <form className="text-right">
                     <input className="my-shadow" type="text" value={tempSearch} onChange={e => setTempSearch(e.target.value)} />
                     <button 
                         className="search-button"
@@ -86,11 +63,17 @@ const NavbarComponent = () => {
                 </form>
             </div>
             <Navbar.Toggle onClick={() => setNavOpen(!navOpen)}/>
-            <Navbar.Collapse isOpen={navOpen} className="bg-dark">
-                <Nav className="ml-auto">
-                    <Nav.Link className="bold nav-list-item float-right" href="/">Top Stories</Nav.Link>
-                    <Nav.Link className="bold nav-list-item float-right" href="/most-popular">Most Popular</Nav.Link>
-                    <Nav.Link className="bold nav-list-item float-right" href="/live-news">Real-Time News</Nav.Link>
+            <Navbar.Collapse isOpen={navOpen} className="nav-bg">
+                <Nav  activeKey={active ? active : "/"} onSelect={(key) => setActive(key)}>
+                    <Nav.Item>
+                        <Link to="/"><Nav.Link eventKey="/" className="nav-list-item float-right">Top Stories</Nav.Link></Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Link to="/most-popular"><Nav.Link eventKey="/most-popular" className="nav-list-item float-right">Most Popular</Nav.Link></Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Link to="/live-news"><Nav.Link eventKey="/live-news" className="nav-list-item float-right">Real-Time News</Nav.Link></Link>
+                    </Nav.Item>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

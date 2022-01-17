@@ -19,7 +19,7 @@ const ContextProvider = (props) => {
         try {
             fetch(`https://api.nytimes.com/svc/news/v3/content/section-list.json?api-key=${API_KEY}`)
             .then(res => res.json())
-            .then(data => setSectionList(data.results.map(section => section.section)))
+            .then(data => setSectionList(data.results.map(section => section.section).filter(section => !section.includes("&"))))
             .catch(error => setErrorMessage(error))
             setLoading(false)
         } catch {
