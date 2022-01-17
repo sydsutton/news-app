@@ -6,7 +6,6 @@ body{
   height: 100vh;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  padding-top: 6rem;
 }
 
 * {
@@ -25,21 +24,11 @@ h1, h2, h3, h4 {
   text-align: center;
 }
 
-nav {
-  height: 4rem;
-  align-items: center;
-  position:fixed;
-  width: 100%;
-  top: 0;
-  z-index: 20;
-  background:rgb(173, 220, 243);
-  letter-spacing: .1em;
-  padding-left: 3rem;
-}
 
 .nav-list-item {
   height: 100%;
-  padding: 1.4rem;
+  width: 10rem;
+  padding: 1rem 0;
 }
 
 .list-unstyled {
@@ -63,7 +52,7 @@ nav {
   width: 100%;
 }
 
-.rounded {
+.rounded-edges {
   border-radius: 50px 10px 50px 10px;
 }
 
@@ -79,10 +68,6 @@ nav {
 
 .justify-content-between {
   justify-content: space-between;
-}
-
-.toggle-collapse {
-  display: none;
 }
 
 .card {
@@ -124,7 +109,7 @@ nav {
   background-color: rgb(241, 247, 246);
 }
 
-.shadow {
+.my-shadow {
   box-shadow: 3px 3px 4px rgba(0,0,0,.08);
 }
 
@@ -167,14 +152,14 @@ input {
 }
 
 .search-button {
-  border-radius: 10px;
-  padding: .5rem 1rem;
+  padding: .3rem 1rem;
   border: none;
-  background-color:rgb(49, 53, 53);
-  color:rgb(238, 232, 232);
+  background-color:rgb(151, 217, 250);
+  color:rgb(57, 58, 57);
   transition: 200ms ease-in-out;
   font-family: 'Raleway', sans-serif;
-  letter-spacing: .05em;
+  /* letter-spacing: .05em; */
+  border-radius: 10px 5px 10px 5px;
 }
 
 select {
@@ -200,10 +185,7 @@ select{
 }
 
 .logo {
-  height: 60px;
-  position: absolute;
-  top: 0;
-  left: 2rem;
+  height: 50px;
 }
 
 .search-button:hover {
@@ -224,8 +206,7 @@ select{
   box-shadow: 5px 5px 5px rgba(0,0,0,.15);
 }
 
-.nav-list-item:hover,
-.active {
+.nav-list-item:hover{
   background:rgb(51, 50, 50);
   color:rgb(226, 240, 232);
 }
@@ -251,10 +232,6 @@ select{
 }
 
 @media (min-width: 200px) and (max-width: 700px) {
-  nav {
-    height: 5rem;
-  }
-
   .nav-list-item {
     font-size: .8em;
   }
@@ -262,8 +239,18 @@ select{
   .subject-container {
     padding: 1rem;
   }
+
   .list-item {
     font-size: .7em;
     margin: .1rem;
+  }
+
+  input {
+    width: 8rem;
+  }
+
+  .search-button {
+    padding: .2rem .8rem;
+
   }
 }

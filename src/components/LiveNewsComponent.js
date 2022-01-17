@@ -42,7 +42,7 @@ const LiveNewsComponent = () => {
                 {sectionList.map(section => {
                     return (
                         <button 
-                            className="list-item shadow"
+                            className="list-item my-shadow"
                             key={section} 
                             onClick={() => setSection(section)}
                         >
@@ -55,7 +55,7 @@ const LiveNewsComponent = () => {
             <div className="center d-flex">
                 {newsData && !errorMessage ? 
                     newsData.map(data => data.map((article, index) => 
-                        <div className="max-width card shadow rounded" key={index}>
+                        <div className="max-width card my-shadow rounded-edges" key={index}>
                             <NewsArticle article={article} />
                         </div>
                     )) 

@@ -14,7 +14,7 @@ const TopStoriesComponent = () => {
             <div className="d-flex">
                 {topStories.map((article, index) => {
                     return (
-                        <div className="max-width card shadow rounded" key={index}>
+                        <div className="max-width card my-shadow rounded-edges" key={index}>
                             <NewsArticle article={article} />
                         </div>
                     )

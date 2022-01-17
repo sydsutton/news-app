@@ -13,7 +13,7 @@ const SearchComponent = () => {
             <div className="d-flex">
                 {searchData ? searchData.map((article, index) => {
                     return (
-                        <div key={index} className="max-width card shadow rounded">
+                        <div key={index} className="max-width card my-shadow rounded-edges">
                             <NewsArticle article={article} />
                         </div>
                     )
