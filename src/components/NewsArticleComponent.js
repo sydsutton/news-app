@@ -1,12 +1,22 @@
-import React from "react"
+import React, {useState} from "react"
 
 const NewsArticleComponent = ({article}) => {
 
     const {title, abstract, multimedia, media, headline, byline, updated, created_date, pub_date, url} = article
 
+    const [visible, setVisible] = useState(false)
+
+    console.log(visible)
+
     return (
-        <>
-            <button onClick={() => window.open(url)} className="text-decoration-none flex-col link-button">
+        <div onClick={() => setVisible(!visible)} className="card-div">
+            <div className="overlay rounded-edges" style={visible ? {display: "block"} : {display: "none"}}>
+                <div className="overlay-text">
+                    <h4>Go to link</h4>
+                    <button onClick={() => window.open(url)} className="overlay-link my-shadow">{url}</button>
+                </div>
+            </div>
+            <div className="my-flex-column">
                 <h2 className="letter-spacing">{title ? title : headline ? headline.main : null}</h2>
                 <p className="small lower-case float-right byline">{byline.original ? byline.original : byline.original === null ? "By Uknown" : byline && !byline.original ? byline : null}</p>
                 {
@@ -28,8 +38,8 @@ const NewsArticleComponent = ({article}) => {
                 } 
                 <p className="bold line-height">{abstract}</p>
                 <p className="small date">{pub_date ? `Published on ${pub_date.slice(0, 10)}` : updated ? `Updated on ${updated.slice(0, 10)} ` : created_date ? `Created on ${created_date.slice(0, 10)}` :  null}</p> 
-            </button>
-        </>
+            </div>
+        </div>
     )
     
 }
