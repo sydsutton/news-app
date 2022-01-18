@@ -6,8 +6,7 @@ import {Link, useNavigate} from "react-router-dom"
 
 const NavbarComponent = () => {
     const [tempSearch,  setTempSearch] = useState("")
-    const [navOpen, setNavOpen] = useState(false)
-    const [topStoriesActive, setTopStoriesActive] = useState(false)
+    const [topStoriesActive, setTopStoriesActive] = useState(true)
     const [mostPopularActive, setMostPopularActive] = useState(false)
     const [liveNewsActive, setLiveNewsActive] = useState(false)
 
@@ -18,10 +17,12 @@ const NavbarComponent = () => {
     const navigate = useNavigate()
 
     const handleClick = (e) => {
+
         e.preventDefault()
         setSearchQuery(tempSearch)
         setLoading(true)
         setSearchData([])
+
         async function getSearchData() {
             try {
                 await fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${tempSearch}&api-key=${API_KEY}`)
@@ -67,8 +68,8 @@ const NavbarComponent = () => {
                     </button>
                 </form>
             </div>
-            <Navbar.Toggle className="toggle-icon" onClick={() => setNavOpen(!navOpen)}/>
-            <Navbar.Collapse isOpen={navOpen} className="nav-bg">
+            <Navbar.Toggle className="toggle-icon"/>
+            <Navbar.Collapse className="nav-bg">
                 <Nav className="nav-collapse">
                     <Link 
                         to="/"
