@@ -13,8 +13,8 @@ const NavbarComponent = () => {
 
     //I used a temporary search variable so that the search page would not update
     //the search query with every key stroke.
-    const API_KEY = process.env.REACT_APP_API_KEY
-    const {setSearchQuery, setSearchData, setErrorMessage, setLoading} = useContext(Context)
+
+    const {setSearchQuery, setSearchData, setErrorMessage, setLoading, API_KEY} = useContext(Context)
     const navigate = useNavigate()
 
     const handleClick = (e) => {
@@ -48,7 +48,7 @@ const NavbarComponent = () => {
 
     return (
         <Navbar className="nav-bg mb-4 my-shadow" fixed="top" expand="lg" sticky="top">
-            {/* <Navbar.Brand href="/"><img src={logo} className="logo" /></Navbar.Brand> */}
+            <Navbar.Brand href="/"><img src={logo} className="logo" /></Navbar.Brand>
             <div className="float-right custom-width">
                 <form className="text-right">
                     <input className="my-shadow" type="text" value={tempSearch} onChange={e => setTempSearch(e.target.value)} />
