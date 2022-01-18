@@ -13,7 +13,8 @@ const NavbarComponent = (props) => {
 
     //I used a temporary search variable so that the search page would not update
     //the search query with every key stroke.
-    const {API_KEY, setSearchQuery, setSearchData, setErrorMessage, loading, setLoading, handleToggle} = useContext(Context)
+    const API_KEY = process.env.REACT_APP_API_KEY
+    const {setSearchQuery, setSearchData, setErrorMessage, loading, setLoading, handleToggle} = useContext(Context)
     const navigate = useNavigate()
 
     const handleClick = (e) => {

@@ -4,8 +4,6 @@ const Context = React.createContext()
 
 const ContextProvider = (props) => {
 
-    const API_KEY = process.env.REACT_APP_API_KEY
-
     const [sectionList, setSectionList] = useState([])
     const [topStories, setTopStories] = useState([])
     const [searchQuery, setSearchQuery] = useState("")
@@ -49,7 +47,7 @@ const ContextProvider = (props) => {
 
     return (
         <Context.Provider value={{
-            sectionList, API_KEY, topStories, searchQuery, setSearchQuery, searchData, setSearchData, errorMessage, setErrorMessage, loading, setLoading, handleToggle
+            sectionList, topStories, searchQuery, setSearchQuery, searchData, setSearchData, errorMessage, setErrorMessage, loading, setLoading, handleToggle
         }}>
             {props.children}
         </Context.Provider>

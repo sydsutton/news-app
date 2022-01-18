@@ -3,7 +3,8 @@ import {Context} from "../Context"
 import NewsArticle from "./NewsArticleComponent"
 
 const MostPopularComponent = () => {
-    const {API_KEY, loading, setLoading} = useContext(Context)
+    const API_KEY = process.env.REACT_APP_API_KEY
+    const {loading, setLoading} = useContext(Context)
 
     const [type, setType] = useState("shared")
     const [period, setPeriod] = useState(1)

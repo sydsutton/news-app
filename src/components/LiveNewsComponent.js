@@ -3,7 +3,8 @@ import {Context} from "../Context"
 import NewsArticle from "./NewsArticleComponent"
 
 const LiveNewsComponent = () => {
-    const {sectionList, API_KEY, loading, setLoading} = useContext(Context)
+    const API_KEY = process.env.REACT_APP_API_KEY
+    const {sectionList, loading, setLoading} = useContext(Context)
 
     const [section, setSection] = useState("world")
     const [newsData, setNewsData] = useState([])
