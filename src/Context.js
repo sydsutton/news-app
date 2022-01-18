@@ -3,7 +3,7 @@ import React, {useState, useEffect} from "react"
 const Context = React.createContext()
 
 const ContextProvider = (props) => {
-
+    const API_KEY = process.env.REACT_APP_API_KEY
     const [sectionList, setSectionList] = useState([])
     const [topStories, setTopStories] = useState([])
     const [searchQuery, setSearchQuery] = useState("")
