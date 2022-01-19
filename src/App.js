@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="app">
       <Navbar />
-      {errorMessage ? <h1>{errorMessage}</h1> : null}
+      {errorMessage ? <h3>{errorMessage}</h3> : null}
       <Routes>
           <Route exact path="/" element={<TopStories />} />
           <Route path="/most-popular" element={<MostPopular />} />

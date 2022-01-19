@@ -4,7 +4,7 @@ import NewsArticle from "./NewsArticleComponent"
 
 const MostPopularComponent = () => {
     
-    const {loading, setLoading, API_KEY} = useContext(Context)
+    const {loading, setLoading, API_KEY, setErrorMessage} = useContext(Context)
 
     const [type, setType] = useState("shared")
     const [period, setPeriod] = useState(1)
@@ -24,6 +24,7 @@ const MostPopularComponent = () => {
                         setLoading(false)
                     }
                 })
+                .catch(() => setErrorMessage("Sorry, we are having trouble loading that information right now. Please try again later."))
         } catch {
             console.log("error")
             setLoading(false)

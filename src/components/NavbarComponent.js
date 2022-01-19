@@ -13,7 +13,7 @@ const NavbarComponent = () => {
     //I used a temporary search variable so that the search page would not update
     //the search query with every key stroke.
 
-    const {setSearchQuery, setSearchData, setErrorMessage, setLoading, API_KEY} = useContext(Context)
+    const {setSearchQuery, setSearchData, setErrorMessage, setLoading, API_KEY, getSearchData} = useContext(Context)
     const navigate = useNavigate()
 
     const handleClick = (e) => {
@@ -23,28 +23,7 @@ const NavbarComponent = () => {
         setLoading(true)
         setSearchData([])
 
-        async function getSearchData() {
-            try {
-                await fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${tempSearch}&api-key=${API_KEY}`)
-                        .then(res => {
-                            if (res.status >= 200 && res.status <= 299) {
-                                return res.json();
-                              } else {
-                                throw Error(res.statusText);
-                        }})
-                        .then(data => {
-                            setSearchData(data.response.docs)
-                        })
-                        .catch(error => setErrorMessage(error))
-                        // setSearchData([])
-                        setLoading(false)
-                } catch {
-                    setSearchData([])
-                }
-            setLoading(false)
-        }
-
-        getSearchData()
+        getSearchData({tempSearch})
     }
 
     return (

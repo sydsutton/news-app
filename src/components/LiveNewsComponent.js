@@ -4,11 +4,10 @@ import NewsArticle from "./NewsArticleComponent"
 
 const LiveNewsComponent = () => {
 
-    const {sectionList, loading, setLoading, API_KEY} = useContext(Context)
+    const {sectionList, loading, setLoading, API_KEY, setErrorMessage, errorMessage} = useContext(Context)
 
     const [section, setSection] = useState("world")
     const [newsData, setNewsData] = useState([])
-    const [errorMessage, setErrorMessage] = useState("")
 
     useEffect(() => {
         let isMounted = true
@@ -26,7 +25,7 @@ const LiveNewsComponent = () => {
                         setNewsData([data.results])
                     } 
                 })
-                .catch(error => console.log(error))
+                .catch(() => setErrorMessage("Sorry, we are having trouble loading that information right now. Please try again later."))
                 setLoading(false)
         }
         getData()
