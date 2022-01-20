@@ -71,28 +71,3 @@ const LiveNewsComponent = () => {
 }
 
 export default LiveNewsComponent
-
-// abstract: ""
-// byline: "BY MEGAN SPECIA"
-// created_date: "2022-01-14T12:42:02-05:00"
-// des_facet: null
-// first_published_date: "2022-01-14T12:42:02-05:00"
-// geo_facet: null
-// item_type: "Article"
-// kicker: ""
-// material_type_facet: "Live Blog Post"
-// x multimedia: (4) [{…}, {…}, {…}, {…}]
-// org_facet: null
-// per_facet: null
-// published_date: "2022-01-14T12:42:02-05:00"
-// related_urls: null
-// section: "World"
-// slug_name: "14virus-briefing-europe-version"
-// source: "New York Times"
-// subheadline: ""
-// subsection: ""
-// thumbnail_standard: "https://static01.nyt.com/images/2022/01/14/multimedia/14virus-briefing-europe/14virus-briefing-europe-thumbStandard.jpg"
-// title: "Omicron prompts changes in European pandemic policies that some public health experts say are risky."
-// updated_date: "2022-01-14T12:42:02-05:00"
-// uri: "nyt://article/0a332960-d791-542b-b3c9-837881f320f0"
-// url: "https://www.nytimes.com/live/2022/01/14/world/omicron-covid-vaccine-tests/omic

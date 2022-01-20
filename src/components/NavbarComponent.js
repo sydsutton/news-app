@@ -110,7 +110,7 @@ const NavbarComponent = () => {
                                 setSavedArticlesActive(true)
                             }}
                         >
-                            {savedArticlesArray.length} Saved
+                            {savedArticlesArray.length > 0 ? savedArticlesArray.length : null} Saved
                         </div>
                     </Link>
                 </Nav>

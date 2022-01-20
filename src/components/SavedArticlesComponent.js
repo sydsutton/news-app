@@ -1,9 +1,26 @@
 import React, {useState, useContext} from "react"
+import {Context} from "../Context"
+import NewsArticle from "./NewsArticleComponent"
 
 const SavedArticlesComponent = () => {
+
+    const {savedArticlesArray} = useContext(Context)
     return (
         <div>
-            <h3>Saved Articles</h3>
+            <h2>Saved Articles</h2>
+            {savedArticlesArray.length > 0 ? 
+                <div className="center d-flex">
+                    {savedArticlesArray.map((article, index) => {
+                        return (
+                            <div className="max-width card my-shadow rounded-edges" key={index}>
+                                <NewsArticle article={article} />
+                            </div>  
+                        )
+                    })}
+                </div>
+            :
+            <p className="mt-4">You don't have any saved articles yet</p>
+            }
         </div>
     )
 }
