@@ -69,6 +69,7 @@ h1, h2, h3, h4 {
   padding: 1rem;
   transition: 200ms ease-in-out ;
   border: none;
+  padding-top: 1.5rem;
 }
 
 
@@ -285,7 +286,7 @@ select{
   width: 10rem;
   height: 100%;
   border: none;
-  padding: 1.2rem;
+  padding: 1.2rem .8rem;
   color:rgb(39, 37, 37);
   font-weight: bold;
 }
@@ -301,6 +302,29 @@ select{
   background-color:rgb(151, 217, 250);
   padding: 0;
 }
+
+.save-btn,
+.saved {
+  width: 40%;
+  align-self: center;
+  border: 1px solid rgb(39, 37, 37);
+  border-radius: 20px;
+  padding: .25rem;
+  background: transparent;
+  font-size: .8rem;
+}
+
+.save-btn:hover {
+  color:rgb(228, 237, 241);
+  background-color:rgb(51, 50, 50);
+}
+
+.saved {
+  color:rgb(228, 237, 241);
+  background-color:rgb(51, 50, 50);
+  border: 1px solid rgb(51, 50, 50);;
+}
+
 
 @media (min-width: 200px) and (max-width: 970px) {
   .nav-list-item {

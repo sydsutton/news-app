@@ -11,6 +11,7 @@ const ContextProvider = (props) => {
     const [searchData, setSearchData] = useState([])
     const [errorMessage, setErrorMessage] = useState("")
     const [loading, setLoading] = useState(false)
+    const [savedArticlesArray, setSavedArticlesArray] = useState([])
 
     useEffect(() => {
         let isMounted = true
@@ -61,10 +62,18 @@ const ContextProvider = (props) => {
         setLoading(false)
     }
 
+    const saveArticle = (article) => {
+        setSavedArticlesArray([...savedArticlesArray, article])
+    }
+
+    const removeArticle = (article) => {
+        setSavedArticlesArray([...savedArticlesArray.filter(prevArticles => prevArticles !== article)])
+    }
+
 
     return (
         <Context.Provider value={{
-            sectionList, API_KEY, topStories, searchQuery, setSearchQuery, searchData, setSearchData, errorMessage, setErrorMessage, loading, setLoading, getSearchData
+            sectionList, API_KEY, topStories, searchQuery, setSearchQuery, searchData, setSearchData, errorMessage, setErrorMessage, loading, setLoading, getSearchData, saveArticle, removeArticle, savedArticlesArray
         }}>
             {props.children}
         </Context.Provider>

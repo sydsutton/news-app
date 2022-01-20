@@ -5,6 +5,7 @@ import TopStories from "./components/TopStoriesComponent"
 import MostPopular from "./components/MostPopularComponent"
 import LiveNews from "./components/LiveNewsComponent"
 import Search from "./components/SearchComponent"
+import SavedArticles from './components/SavedArticlesComponent';
 
 import {Routes, Route} from "react-router-dom"
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/most-popular" element={<MostPopular />} />
           <Route path="/live-news" element={<LiveNews />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/saved" element={<SavedArticles />} />
         </Routes>
 
     </div>
