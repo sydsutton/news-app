@@ -1,13 +1,15 @@
 import React, {useContext, useState, useEffect} from "react"
 import {Context} from "../Context"
+import {Spinner} from "react-bootstrap"
 import NewsArticle from "./NewsArticleComponent"
 
 const LiveNewsComponent = () => {
 
-    const {sectionList, loading, setLoading, API_KEY, setErrorMessage, errorMessage} = useContext(Context)
+    const {sectionList, API_KEY, setErrorMessage, errorMessage} = useContext(Context)
 
     const [section, setSection] = useState("world")
     const [newsData, setNewsData] = useState([])
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         let isMounted = true
@@ -22,6 +24,7 @@ const LiveNewsComponent = () => {
                 .then(data => {
                     // console.log(data)
                     if(isMounted){
+                        setLoading(false)
                         setNewsData([data.results])
                     } 
                 })
@@ -51,7 +54,7 @@ const LiveNewsComponent = () => {
                     )
                 })}
             </ul>
-            <p>{loading ? "Loading" : null}</p>
+            <p className="mt-5">{loading ? <Spinner animation="border" /> : null}</p>
             <div className="center d-flex">
                 {newsData && !errorMessage ? 
                     newsData.map(data => data.map((article, index) => 

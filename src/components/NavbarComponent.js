@@ -33,7 +33,7 @@ const NavbarComponent = () => {
         <Navbar className="nav-bg mb-4 my-shadow" fixed="top" expand="lg" sticky="top">
             <Navbar.Brand href="/"><img src={logo} className="logo" alt="Newz logo" /></Navbar.Brand>
             <div className="float-right custom-width">
-                <form className="text-right">
+                <form className="text-right d-flex align-items-center">
                     <input className="my-shadow" type="text" value={tempSearch} onChange={e => setTempSearch(e.target.value)} />
                     <button 
                         className="search-button"
@@ -110,7 +110,10 @@ const NavbarComponent = () => {
                                 setSavedArticlesActive(true)
                             }}
                         >
-                            {savedArticlesArray.length > 0 ? savedArticlesArray.length : null} Saved
+                            {savedArticlesArray.length > 0 ? 
+                                <div>{savedArticlesArray.length} Saved </div>
+                                : 
+                                <div>Saved</div> }
                         </div>
                     </Link>
                 </Nav>

@@ -1,14 +1,16 @@
 import React, {useEffect, useState, useContext} from "react"
 import {Context} from "../Context"
+import {Spinner} from "react-bootstrap"
 import NewsArticle from "./NewsArticleComponent"
 
 const MostPopularComponent = () => {
     
-    const {loading, setLoading, API_KEY, setErrorMessage} = useContext(Context)
+    const {API_KEY, setErrorMessage} = useContext(Context)
 
     const [type, setType] = useState("shared")
     const [period, setPeriod] = useState(1)
     const [newsData, setNewsData] = useState([])
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         setNewsData([])
@@ -30,6 +32,7 @@ const MostPopularComponent = () => {
             setLoading(false)
         }
         return () => {isMounted = false}
+
     }, [type, period])
 
     return (
@@ -47,7 +50,7 @@ const MostPopularComponent = () => {
                 <option value={30}>In the last month</option>
             </select>
 
-            <p>{loading ? "loading... " : null}</p>
+            <div className="mt-5">{loading ? <Spinner animation="border" /> : null}</div>
 
             <div className="d-flex">
                 {newsData.filter(article => article.media.length >= 1).map((article, index) => {

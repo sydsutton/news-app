@@ -42,6 +42,7 @@ const ContextProvider = (props) => {
     }, [])
 
     async function getSearchData({tempSearch}) {
+        setLoading(true)
         try {
             await fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${tempSearch}&api-key=${API_KEY}`)
                     .then(res => {
@@ -51,15 +52,15 @@ const ContextProvider = (props) => {
                             throw Error(res.statusText);
                     }})
                     .then(data => {
-                        console.log(data)
+                        setLoading(false)
                         setSearchData(data.response.docs)
                     })
                     .catch(() => setErrorMessage("Sorry, we are having trouble loading that information right now. Please try again later."))
                     setLoading(false)
             } catch {
+                setLoading(false)
                 setSearchData([])
             }
-        setLoading(false)
     }
 
     const saveArticle = (article) => {

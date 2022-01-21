@@ -7,7 +7,8 @@ const SavedArticlesComponent = () => {
     const {savedArticlesArray} = useContext(Context)
     return (
         <div>
-            <h2>Saved Articles</h2>
+            <h1>Saved Articles</h1>
+            <hr className="hr"/>
             {savedArticlesArray.length > 0 ? 
                 <div className="center d-flex">
                     {savedArticlesArray.map((article, index) => {

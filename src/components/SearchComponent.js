@@ -1,5 +1,6 @@
 import React, {useContext} from "react"
 import {Context} from "../Context"
+import {Spinner} from "react-bootstrap"
 import NewsArticle from "./NewsArticleComponent"
 
 const SearchComponent = () => {
@@ -10,7 +11,9 @@ const SearchComponent = () => {
         <>
             <h2 className="letter-spacing">SEARCH {searchQuery ? `RESULTS FOR ${searchQuery.toUpperCase()}` : null }</h2>
             <hr className="hr"/>
-            {loading ? "loading..." : null}
+
+            <div className="mt-5">{loading ? <Spinner animation="border" /> : null}</div>
+
             <div className="d-flex">
                 {searchData ? searchData.map((article, index) => {
                     return (
