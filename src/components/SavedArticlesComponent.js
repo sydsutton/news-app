@@ -1,10 +1,15 @@
-import React, {useState, useContext} from "react"
+import React, {useEffect, useContext} from "react"
 import {Context} from "../Context"
 import NewsArticle from "./NewsArticleComponent"
 
 const SavedArticlesComponent = () => {
 
     const {savedArticlesArray} = useContext(Context)
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    },[])
+
     return (
         <div>
             <h1>Saved Articles</h1>

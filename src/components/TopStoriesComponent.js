@@ -1,4 +1,4 @@
-import React, {useContext} from "react"
+import React, {useContext, useEffect} from "react"
 import {Spinner} from "react-bootstrap"
 import {Context} from "../Context"
 import NewsArticle from "./NewsArticleComponent"
@@ -6,6 +6,10 @@ import NewsArticle from "./NewsArticleComponent"
 const TopStoriesComponent = () => {
 
     const {topStories, loading} = useContext(Context)
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    },[])
     
     return (
         <div className="center">

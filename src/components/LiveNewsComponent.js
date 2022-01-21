@@ -12,11 +12,10 @@ const LiveNewsComponent = () => {
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         let isMounted = true
         setNewsData([])
         async function getData(){
-
-            let isMounted = true
             setLoading(true)
 
             await fetch(`https://api.nytimes.com/svc/news/v3/content/nyt/${section}.json?api-key=${API_KEY}`)
@@ -54,7 +53,7 @@ const LiveNewsComponent = () => {
                     )
                 })}
             </ul>
-            <p className="mt-5">{loading ? <Spinner animation="border" /> : null}</p>
+            <div className="mt-5">{loading ? <Spinner animation="border" /> : null}</div>
             <div className="center d-flex">
                 {newsData && !errorMessage ? 
                     newsData.map(data => data.map((article, index) => 
