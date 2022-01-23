@@ -6,16 +6,21 @@ import MostPopular from "./components/MostPopularComponent"
 import LiveNews from "./components/LiveNewsComponent"
 import Search from "./components/SearchComponent"
 import SavedArticles from './components/SavedArticlesComponent';
-
+import Login from "./components/LoginComponent"
 import {Routes, Route} from "react-router-dom"
 
 import {Context} from "./Context"
 
 function App() {
-  const {errorMessage} = useContext(Context)
+  const {errorMessage, modalOpen} = useContext(Context)
 
   return (
     <div className="app">
+      {modalOpen ? 
+        <Login />
+        :
+        null
+      }
       <Navbar />
       {errorMessage ? <h3>{errorMessage}</h3> : null}
       <Routes>

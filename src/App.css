@@ -324,7 +324,38 @@ select{
   background-color:rgb(51, 50, 50);
   border: 1px solid rgb(51, 50, 50);;
 }
+.my-modal {
+  position: absolute;
+  position: fixed;
+  z-index: 30;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  background:rgba(134, 134, 134, 0.8);
+}
 
+.inner {
+  position: absolute;
+  top: 25%;
+  right: 25%;
+  width: 50%;
+  min-width: 400px;
+  height: 500px;
+  background:rgb(236, 240, 236);
+  border-radius: 20px;
+}
+
+.close-modal-btn {
+  position:absolute;
+  right: 15px;
+  top: 10px;
+  border: none;
+  font-size: 1.3em;
+}
+
+.disabled {
+  z-index: 2;
+}
 
 @media (min-width: 200px) and (max-width: 990px) {
   .nav-list-item {

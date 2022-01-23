@@ -12,6 +12,8 @@ const ContextProvider = (props) => {
     const [errorMessage, setErrorMessage] = useState("")
     const [loading, setLoading] = useState(false)
     const [savedArticlesArray, setSavedArticlesArray] = useState([])
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [modalOpen, setModalOpen] = useState(false)
 
     useEffect(() => {
         let isMounted = true
@@ -74,7 +76,7 @@ const ContextProvider = (props) => {
 
     return (
         <Context.Provider value={{
-            sectionList, API_KEY, topStories, searchQuery, setSearchQuery, searchData, setSearchData, errorMessage, setErrorMessage, loading, setLoading, getSearchData, saveArticle, removeArticle, savedArticlesArray
+            sectionList, API_KEY, topStories, searchQuery, setSearchQuery, searchData, setSearchData, errorMessage, setErrorMessage, loading, setLoading, getSearchData, saveArticle, removeArticle, savedArticlesArray, isLoggedIn, setIsLoggedIn, modalOpen, setModalOpen
         }}>
             {props.children}
         </Context.Provider>

@@ -14,7 +14,7 @@ const NavbarComponent = () => {
     //I used a temporary search variable so that the search page would not update
     //the search query with every key stroke.
 
-    const {setSearchQuery, setSearchData, setLoading, getSearchData, savedArticlesArray} = useContext(Context)
+    const {setSearchQuery, setSearchData, setLoading, getSearchData, savedArticlesArray, isLoggedIn, modalOpen, setModalOpen} = useContext(Context)
     const navigate = useNavigate()
 
     const handleClick = (e) => {
@@ -30,7 +30,7 @@ const NavbarComponent = () => {
     }
 
     return (
-        <Navbar className="nav-bg mb-4 my-shadow" fixed="top" expand="lg" sticky="top">
+        <Navbar className={modalOpen ? "nav-bg mb-4 my-shadow disabled" : "nav-bg mb-4 my-shadow"} fixed="top" expand="lg" sticky="top">
             <Navbar.Brand href="/"><img src={logo} className="logo" alt="Newz logo" /></Navbar.Brand>
             <div className="float-right custom-width">
                 <form className="text-right d-flex align-items-center">
@@ -98,6 +98,7 @@ const NavbarComponent = () => {
                             Real-Time News
                         </div>
                     </Link>
+                    {isLoggedIn ?
                     <Link 
                         to="/saved" 
                     >
@@ -116,6 +117,11 @@ const NavbarComponent = () => {
                                 <div>Saved</div> }
                         </div>
                     </Link>
+                    :
+                    <>
+                        <button className="nav-list-item bg-transparent" onClick={() => setModalOpen(true)}>Log In</button>
+                    </>
+                    }
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
