@@ -1,15 +1,15 @@
 import React, {useState, useContext} from "react"
-import {AiOutlinePlus, AiOutlineMinus} from "react-icons/ai"
+import {AiOutlinePlus, AiOutlineMinus, AiOutlineLogin} from "react-icons/ai"
 
 import {Context} from "../Context"
 
 const NewsArticleComponent = ({article}) => {
 
     const {title, abstract, multimedia, media, headline, byline, updated, created_date, pub_date, url, web_url} = article
-    const {saveArticle, removeArticle, savedArticlesArray} = useContext(Context)
+    const {saveArticle, removeArticle, savedArticlesArray, isLoggedIn, setModalOpen} = useContext(Context)
 
     const [visible, setVisible] = useState(false)
-    console.log(savedArticlesArray)
+    const buttonClass = "saved d-flex align-items-center justify-content-evenly"
     return (
         <>
             <div onClick={() => setVisible(!visible)} className="card-div">
@@ -43,10 +43,27 @@ const NewsArticleComponent = ({article}) => {
                     <p className="small date">{pub_date ? `Published on ${pub_date.slice(0, 10)}` : updated ? `Updated on ${updated.slice(0, 10)} ` : created_date ? `Created on ${created_date.slice(0, 10)}` :  null}</p>
                 </div>
             </div>
-            {!savedArticlesArray.includes(article) ? 
-                <button className="save-btn d-flex align-items-center justify-content-evenly" onClick={() => saveArticle(article)}><AiOutlinePlus size={15} className="pr-3" /> Save Article</button> 
+            {isLoggedIn && !savedArticlesArray.includes(article) ? 
+                <button 
+                    className={buttonClass}
+                    onClick={() => saveArticle(article)}
+                >
+                        <AiOutlinePlus size={15} className="pr-3" /> Save Article
+                </button> 
                 :
-                <button className="saved d-flex align-items-center justify-content-evenly" onClick={() => removeArticle(article)}><AiOutlineMinus size={15} className="pr-3" />Unsave Article</button> 
+            !isLoggedIn ?
+                <button 
+                    className={`${buttonClass} article-login`}
+                    onClick={() => setModalOpen(true)}
+                >
+                    <AiOutlineLogin size={15} className="pr-3" /> Login to save
+                </button>
+                :
+                <button 
+                    className={buttonClass}
+                    onClick={() => removeArticle(article)}>
+                        <AiOutlineMinus size={15} className="pr-3" />Unsave Article
+                </button> 
             }
         </>
     )

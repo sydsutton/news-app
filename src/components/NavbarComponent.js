@@ -3,6 +3,7 @@ import logo from "../images/logo.png"
 import { Navbar, Nav } from 'react-bootstrap'
 import {Context} from "../Context"
 import {Link, useNavigate} from "react-router-dom"
+import {AiOutlineLogin} from "react-icons/ai"
 
 const NavbarComponent = () => {
     const [tempSearch,  setTempSearch] = useState("")
@@ -119,7 +120,11 @@ const NavbarComponent = () => {
                     </Link>
                     :
                     <>
-                        <button className="nav-list-item bg-transparent" onClick={() => setModalOpen(true)}>Log In</button>
+                        <button 
+                            className="nav-list-item bg-transparent nav-login" 
+                            onClick={() => setModalOpen(true)}>
+                                <AiOutlineLogin size={15} className="pr-3" /> Log In
+                        </button>
                     </>
                     }
                 </Nav>
