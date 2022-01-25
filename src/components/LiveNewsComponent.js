@@ -21,11 +21,8 @@ const LiveNewsComponent = () => {
             await fetch(`https://api.nytimes.com/svc/news/v3/content/nyt/${section}.json?api-key=${API_KEY}`)
                 .then(res => res.json())
                 .then(data => {
-                    // console.log(data)
-                    if(isMounted){
-                        setLoading(false)
-                        setNewsData([data.results])
-                    } 
+                    setLoading(false)
+                    setNewsData([data.results])
                 })
                 .catch(() => setErrorMessage("Sorry, we are having trouble loading that information right now. Please try again later."))
                 setLoading(false)
@@ -55,7 +52,7 @@ const LiveNewsComponent = () => {
             </ul>
             <div className="mt-5">{loading ? <Spinner animation="border" /> : null}</div>
             <div className="center d-flex">
-                {newsData && !errorMessage ? 
+                {newsData ? 
                     newsData.map(data => data.map((article, index) => 
                         <div className="max-width card my-shadow rounded-edges" key={index}>
                             <NewsArticle article={article} />

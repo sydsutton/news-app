@@ -4,17 +4,30 @@ import NewsArticle from "./NewsArticleComponent"
 
 const SavedArticlesComponent = () => {
 
-    const {savedArticlesArray} = useContext(Context)
+    const {savedArticlesArray, currentUser, isLoggedIn, setIsLoggedIn} = useContext(Context)
 
     useEffect(() => {
         window.scrollTo(0, 0);
     },[])
 
+    console.log(currentUser)
+
     return (
         <div>
+            {currentUser && isLoggedIn ? 
+                <div className="mb-5">
+                    <h1>Account</h1>
+                    <hr className="hr"/>
+                    <p>Email: {currentUser.email}</p>
+                    <p>Account created: {currentUser.metadata.creationTime}</p>
+                    <button onClick={() => setIsLoggedIn(false)}>Log Out</button>
+                </div>
+            :
+            null
+            }
             <h1>Saved Articles</h1>
             <hr className="hr"/>
-            {savedArticlesArray.length > 0 ? 
+            {savedArticlesArray.length > 0 && isLoggedIn ? 
                 <div className="center d-flex">
                     {savedArticlesArray.map((article, index) => {
                         return (

@@ -10,6 +10,7 @@ const NewsArticleComponent = ({article}) => {
 
     const [visible, setVisible] = useState(false)
     const buttonClass = "saved d-flex align-items-center justify-content-evenly"
+
     return (
         <>
             <div onClick={() => setVisible(!visible)} className="card-div">

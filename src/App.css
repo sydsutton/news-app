@@ -147,7 +147,6 @@ input {
   border-radius: 10px 5px 10px 5px;
   border: none;
   margin-right: .5rem;
-  text-transform: uppercase;
   font-weight: bold;
   padding-left: .3rem;
 }
@@ -289,6 +288,11 @@ select{
   padding: 1.2rem .8rem;
   color:rgb(39, 37, 37);
   font-weight: bold;
+}
+
+.signup-container {
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 

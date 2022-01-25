@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from "react"
+import React, {useState, useEffect, useContext} from "react"
+import { auth } from "./firebase"
 
 const Context = React.createContext()
 
@@ -14,6 +15,7 @@ const ContextProvider = (props) => {
     const [savedArticlesArray, setSavedArticlesArray] = useState([])
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [modalOpen, setModalOpen] = useState(false)
+    const [currentUser, setCurrentUser] = useState()
 
     useEffect(() => {
         let isMounted = true
@@ -40,6 +42,11 @@ const ContextProvider = (props) => {
             console.log("error")
         }
         setLoading(false)
+
+        auth.onAuthStateChanged(user => {
+            setCurrentUser(user)
+        })
+
         return () => {isMounted = false}
     }, [])
 
@@ -72,11 +79,39 @@ const ContextProvider = (props) => {
     const removeArticle = (article) => {
         setSavedArticlesArray([...savedArticlesArray.filter(prevArticles => prevArticles !== article)])
     }
+    
+    const signup = (email, password) => {
+        auth.createUserWithEmailAndPassword(email, password)
+    }
 
+    const login = (email, password) => {
+        auth.signInWithEmailAndPassword(email, password)
+    }
 
     return (
         <Context.Provider value={{
-            sectionList, API_KEY, topStories, searchQuery, setSearchQuery, searchData, setSearchData, errorMessage, setErrorMessage, loading, setLoading, getSearchData, saveArticle, removeArticle, savedArticlesArray, isLoggedIn, setIsLoggedIn, modalOpen, setModalOpen
+            sectionList,
+            API_KEY,
+            topStories,
+            searchQuery,
+            setSearchQuery,
+            searchData,
+            setSearchData,
+            errorMessage,
+            setErrorMessage,
+            loading,
+            setLoading,
+            getSearchData,
+            saveArticle,
+            removeArticle,
+            savedArticlesArray,
+            isLoggedIn,
+            setIsLoggedIn,
+            modalOpen,
+            setModalOpen,
+            currentUser,
+            signup,
+            login
         }}>
             {props.children}
         </Context.Provider>
