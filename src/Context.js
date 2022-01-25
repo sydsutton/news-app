@@ -85,7 +85,7 @@ const ContextProvider = (props) => {
     }
     
     const signup = (email, password) => {
-        auth.createUserWithEmailAndPassword(email, password)
+        return auth.createUserWithEmailAndPassword(email, password)
     }
 
     const login = (email, password) => {

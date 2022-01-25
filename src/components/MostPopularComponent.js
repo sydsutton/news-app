@@ -37,8 +37,8 @@ const MostPopularComponent = () => {
     }, [type, period])
 
     return (
-        <>
-            <h1>Most Popular</h1>
+        <div className="page-width center">
+            <h2 className="letter-spacing">Most Popular</h2>
             <hr className="hr"/>
             <select onChange={e => setType(e.target.value)}>
                 <option value="shared">The most shared articles</option>
@@ -63,7 +63,7 @@ const MostPopularComponent = () => {
                     )
                 })}
             </div>
-        </>
+        </div>
     )
 }
 

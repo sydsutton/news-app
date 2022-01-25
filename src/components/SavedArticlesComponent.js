@@ -13,10 +13,10 @@ const SavedArticlesComponent = () => {
     },[])
 
     return (
-        <div>
+        <div className="page-width center">
             {currentUser && isLoggedIn ? 
                 <div className="mb-5">
-                    <h1>Account</h1>
+                    <h2 className="letter-spacing">Account</h2>
                     <hr className="hr"/>
                     <div className="text-align-left">
                         <p>Email: {currentUser.email}</p>
@@ -36,7 +36,7 @@ const SavedArticlesComponent = () => {
             :
             null
             }
-            <h1>Saved Articles</h1>
+            <h2 className="letter-spacing">Saved Articles</h2>
             <hr className="hr"/>
             {savedArticlesArray.length > 0 && isLoggedIn ? 
                 <div className="center d-flex">

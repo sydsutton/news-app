@@ -12,10 +12,9 @@ const TopStoriesComponent = () => {
     },[])
     
     return (
-        <div className="center">
-            <h1 className="letter-spacing">Top Stories</h1>
+        <div className="center page-width">
+            <h2 className="letter-spacing">Top Stories</h2>
             <hr className="hr"/>
-
             <div className="mt-5">{loading ? <Spinner animation="border" /> : null}</div>
             <div className="d-flex">
 

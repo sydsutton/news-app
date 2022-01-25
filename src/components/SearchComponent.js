@@ -12,8 +12,8 @@ const SearchComponent = () => {
     },[])
 
     return (
-        <>
-            <h2 className="letter-spacing">SEARCH {searchQuery ? `RESULTS FOR ${searchQuery.toUpperCase()}` : null }</h2>
+        <div className="page-width center">
+            <h2 className="letter-spacing">Search {searchQuery ? `RESULTS FOR ${searchQuery.toUpperCase()}` : null }</h2>
             <hr className="hr"/>
 
             <div className="mt-5">{loading ? <Spinner animation="border" /> : null}</div>
@@ -30,7 +30,7 @@ const SearchComponent = () => {
                 null
             }
             </div>
-        </>
+        </div>
     )
 }
 

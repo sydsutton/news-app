@@ -34,8 +34,8 @@ const LiveNewsComponent = () => {
     }, [section])
 
     return (
-        <>
-            <h1 className="center">Live News Sections</h1>
+        <div className="center">
+            <h2 className="center letter-spacing">Live News Sections</h2>
             <hr className="hr"/>
             <ul className="list-unstyled center subject-container">
                 {sectionList.map(section => {
@@ -51,7 +51,7 @@ const LiveNewsComponent = () => {
                 })}
             </ul>
             <div className="mt-5">{loading ? <Spinner animation="border" /> : null}</div>
-            <div className="center d-flex">
+            <div className="center d-flex page-width">
                 {newsData ? 
                     newsData.map(data => data.map((article, index) => 
                         <div className="max-width card my-shadow rounded-edges" key={index}>
@@ -65,7 +65,7 @@ const LiveNewsComponent = () => {
                 null
                 }
             </div>
-        </>
+        </div>
     )
 }
 

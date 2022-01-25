@@ -27,7 +27,7 @@ const LoginComponent = () => {
     return (
         <div className="my-modal">
             <div className="inner my-shadow">
-                <h1>Log In</h1>
+                <h3 className="letter-spacing">Log In</h3>
                 <hr className="hr mb-2"/>
                 <div className="signup-error">{error ? error : null}</div>
                 <form className="login-form" onSubmit={handleSubmit}>

@@ -12,11 +12,10 @@ const SignupComponent = () => {
     const navigate = useNavigate()
 
     const handleSubmit = async(e) => {
+        e.preventDefault()
         if(password !== confirmPassword){
-            e.preventDefault()
             setError("Please make sure your passwords match")
         } else if (password === confirmPassword && password.length < 6){
-            e.preventDefault()
             setError("You password must be at least 6 characters")
         } else {
             try {
@@ -24,7 +23,6 @@ const SignupComponent = () => {
                 await signup(email, password)
                 navigate("/")
             } catch {
-                e.preventDefault()
                 setError("Failed to create an account")
             }   
         }
@@ -33,7 +31,7 @@ const SignupComponent = () => {
 
     return (
         <div className="signup-container">
-            <h1>Sign Up</h1>
+            <h2 className="letter-spacing">Sign Up</h2>
             <hr className="hr mb-2"/>
             <div className="signup-error">{error ? error : null}</div>
             <form className="login-form" onSubmit={handleSubmit}>

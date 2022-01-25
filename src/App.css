@@ -33,6 +33,9 @@ h1, h2, h3, h4 {
   margin: 0 auto;
 }
 
+.page-width {
+  max-width: 1500px;
+}
 .d-flex {
   display: flex;
   flex-direction: row;
@@ -50,7 +53,7 @@ h1, h2, h3, h4 {
 }
 
 .image {
-  width: 300px;
+  width: 250px;
   transition: 300ms ease-in-out ;
   margin: 1rem 0;
 }
@@ -70,8 +73,8 @@ h1, h2, h3, h4 {
   transition: 200ms ease-in-out ;
   border: none;
   padding-top: 1.5rem;
+  max-width: 300px;
 }
-
 
 .text-decoration-none {
   text-decoration: none;
@@ -100,9 +103,10 @@ h1, h2, h3, h4 {
 .list-item {
   margin: .2rem;
   border-radius: 10px 5px 10px 5px;
-  padding: .3rem .8rem;
+  padding: .2rem .5rem;
   border: .5px solid rgb(196, 194, 194);
   background-color: rgb(241, 247, 246);
+  font-size: .8em;
 }
 
 .my-shadow {
@@ -141,13 +145,16 @@ h1, h2, h3, h4 {
   letter-spacing: .08em;
 }
 
+.nav-bg input {
+  padding-left: .75em;
+}
+
 input {
   width: 10rem;
-  height: 2rem;
+  height: 1.75rem;
   border-radius: 10px 5px 10px 5px;
   border: none;
   margin-right: .5rem;
-  font-weight: bold;
   padding-left: .3rem;
 }
 
@@ -158,12 +165,16 @@ input {
   justify-content: space-evenly;
 }
 
+.nav-list-item:last-child {
+  margin-right: 2em;
+}
+
 .toggle-icon {
   margin-right: 1rem;
 }
 
 .search-button {
-  padding: .3rem 1rem;
+  padding: .2rem 1rem;
   border: none;
   background-color:rgb(57, 58, 57);
   color:rgb(228, 237, 241);
@@ -282,12 +293,12 @@ select{
 .nav-list-item {
   text-decoration: none;
   float: right;
-  width: 10rem;
-  height: 100%;
+  width: 8rem;
   border: none;
-  padding: 1.2rem .8rem;
+  padding: .7rem .8rem;
   color:rgb(39, 37, 37);
   font-weight: bold;
+  font-size: .7em;
 }
 
 .signup-container {
@@ -302,7 +313,8 @@ select{
 .active {
   color:rgb(228, 237, 241);
   background-color:rgb(51, 50, 50);
-  padding: 1.2rem;
+  height: 100%;
+  border-radius: 10px 5px 10px 5px;
 }
 
 .nav-bg {
@@ -344,9 +356,9 @@ select{
 .inner {
   position: absolute;
   top: 25%;
-  right: calc(50% - 250px);
+  right: calc(50% - 200px);
   min-width: 400px; 
-  width: 500px;
+  width: 400px;
   height: 425px;
   background:rgb(236, 240, 236);
   border-radius: 20px;
@@ -427,12 +439,16 @@ select{
   .nav-list-item {
     font-size: .8em;
     padding: .4rem;
-    width: 100%;
     letter-spacing: .08em;
+    text-align: center;
   }
-
+ 
   .subject-container {
     padding: 1rem;
+  }
+
+  .nav-login {
+    padding-right: 2rem;
   }
 
   .list-item {
@@ -468,11 +484,6 @@ select{
   .nav-login {
     width: 100%;
     text-align: right;
-  }
-
-  .active {
-    background-color: unset;
-    background-image: linear-gradient(90deg, transparent 30%, rgb(51, 50, 50) 80%);
   }
 
   select {
