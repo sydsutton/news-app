@@ -3,7 +3,7 @@ import {Link, useNavigate} from "react-router-dom"
 import {Context} from "../Context"
 
 const LoginComponent = () => {
-    const {setModalOpen, login, currentUser, setIsLoggedIn} = useContext(Context)
+    const {setModalOpen, login, setIsLoggedIn} = useContext(Context)
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
@@ -16,14 +16,13 @@ const LoginComponent = () => {
         try {
             setError("")
             await login(email, password)
-            navigate("/")
+            navigate("/saved")
             setIsLoggedIn(true)
             setModalOpen(false)
         } catch {
             setError("Failed to log in")
         }   
     }
-
 
     return (
         <div className="my-modal">

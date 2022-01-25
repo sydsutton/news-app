@@ -291,10 +291,13 @@ select{
 }
 
 .signup-container {
-  max-width: 700px;
+  max-width: 500px;
   margin: 0 auto;
 }
 
+.signup-container form input {
+  margin-bottom: 1rem;
+}
 
 .active {
   color:rgb(228, 237, 241);
@@ -344,7 +347,7 @@ select{
   right: calc(50% - 250px);
   min-width: 400px; 
   width: 500px;
-  height: 500px;
+  height: 425px;
   background:rgb(236, 240, 236);
   border-radius: 20px;
   padding: 1rem;
@@ -381,26 +384,12 @@ select{
   padding: .5em;
   background:rgb(51, 50, 50);
   color:rgb(211, 235, 231);
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .login-btn:hover {
-  background:rgb(48, 77, 78);
-}
-
-.btn-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.btn-group button {
-  width: 50%;
-  margin: .25rem;
-  border: none;
-  background:rgb(199, 228, 228);
-  border-radius: 5px;
-  padding: .25em;
+  background:rgb(231, 235, 231);
+  color: rgb(51, 50, 50);
 }
 
 .article-login {
@@ -421,6 +410,17 @@ select{
 .signup-error {
   color: rgb(207, 26, 26);
   text-decoration: underline;
+}
+
+.outline {
+  background: transparent;
+  color:rgb(39, 37, 37);
+}
+
+.logout-btn {
+  border: none;
+  border-radius: 10px;
+  padding: .5em;
 }
 
 @media (min-width: 200px) and (max-width: 990px) {
@@ -490,9 +490,9 @@ select{
   .inner {
     min-width: unset;
     width: 300px;
-    height: 400px;
+    height: 350px;
     right: calc(50% - 150px);
-    font-size: .7em;
+    font-size: .9em;
   }
 
   .inner .hr{

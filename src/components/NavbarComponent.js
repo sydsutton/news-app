@@ -1,8 +1,8 @@
-import React, {useState, useContext} from "react"
+import React, {useState, useContext, useEffect} from "react"
 import logo from "../images/logo.png"
 import { Navbar, Nav } from 'react-bootstrap'
 import {Context} from "../Context"
-import {Link, useNavigate} from "react-router-dom"
+import {Link, useNavigate, useLocation} from "react-router-dom"
 import {AiOutlineLogin} from "react-icons/ai"
 import {FaUserCircle} from "react-icons/fa"
 
@@ -19,8 +19,20 @@ const NavbarComponent = () => {
 
     const {setSearchQuery, setSearchData, setLoading, getSearchData, savedArticlesArray, isLoggedIn, modalOpen, setModalOpen} = useContext(Context)
     const navigate = useNavigate()
+    const location = useLocation()
 
-    console.log(isLoggedIn)
+    useEffect(()=>{
+        if (location.pathname === "/most-popular"){
+            setMostPopularActive(true)
+         } else if(location.pathname === "/live-news"){
+            setLiveNewsActive(true)
+         } else if(location.pathname === "/saved"){
+            setSavedArticlesActive(true)
+         } else if(location.pathname === "/"){
+             setTopStoriesActive(true)
+         }
+    }, [location.pathname])
+
 
     const handleClick = (e) => {
         e.preventDefault()
@@ -67,10 +79,7 @@ const NavbarComponent = () => {
                     >
                         <div
                             className={topStoriesActive ? "active nav-list-item" : "nav-list-item"}
-                            onClick={() => {
-                                setInactive()
-                                setTopStoriesActive(true)
-                            }}
+                            onClick={() => setInactive()}
                         >
                             Top Stories
                         </div>
@@ -80,10 +89,7 @@ const NavbarComponent = () => {
                     >
                         <div
                             className={mostPopularActive ? "active nav-list-item" : "nav-list-item"}
-                            onClick={() => {
-                                setInactive()
-                                setMostPopularActive(true)
-                            }}
+                            onClick={() => setInactive()}
                         >
                         Most Popular
                         </div>
@@ -93,10 +99,7 @@ const NavbarComponent = () => {
                     >
                         <div
                             className={liveNewsActive ? "active nav-list-item" : "nav-list-item"}
-                            onClick={() => {
-                                setInactive()
-                                setLiveNewsActive(true)
-                            }}
+                            onClick={() => setInactive()}
                         >
                             Real-Time News
                         </div>
@@ -107,15 +110,12 @@ const NavbarComponent = () => {
                     >
                         <div
                             className={savedArticlesActive ? "active nav-list-item" : "nav-list-item"}
-                            onClick={() => {
-                                setInactive()
-                                setSavedArticlesActive(true)
-                            }}
+                            onClick={() => setInactive()}
                         >
                             {savedArticlesArray.length > 0 ? 
-                               <div className="d-flex flex-row justify-content-evenly"><FaUserCircle size={20} className="pr-3" /> {savedArticlesArray.length} Saved</div>
+                               <div className=""><FaUserCircle size={20} /><div className="d-inline">{savedArticlesArray.length} Saved</div> </div>
                                 : 
-                                <div className="d-flex flex-row justify-content-evenly"><FaUserCircle size={20} className="pr-3" />Saved </div>
+                                <div><FaUserCircle size={20}/><div className="d-inline">Saved</div> </div>
                             }
                         </div>
                     </Link>
@@ -125,7 +125,6 @@ const NavbarComponent = () => {
                             className={loginActive ? "nav-list-item bg-transparent nav-login" : "nav-list-item bg-transparent nav-login" }
                             onClick={() => {
                                 setInactive()
-                                setLoginActive(true)
                                 setModalOpen(true)
                             }}>
                                 <AiOutlineLogin size={15} /> Log In

@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from "react"
+import React, {useState, useEffect} from "react"
 import { auth } from "./firebase"
 
 const Context = React.createContext()
@@ -23,7 +23,11 @@ const ContextProvider = (props) => {
         try {
             fetch(`https://api.nytimes.com/svc/news/v3/content/section-list.json?api-key=${API_KEY}`)
             .then(res => res.json())
-            .then(data => setSectionList(data.results.map(section => section.section).filter(section => !section.includes("&") && !section.includes("/"))))
+            .then(data => {
+                if(isMounted){
+                    setSectionList(data.results.map(section => section.section).filter(section => !section.includes("&") && !section.includes("/")))
+                }
+            })
             .catch(() => setErrorMessage("Sorry, we are having trouble loading that information right now. Please try again later."))
             setLoading(false)
         } catch {
@@ -85,7 +89,7 @@ const ContextProvider = (props) => {
     }
 
     const login = (email, password) => {
-        auth.signInWithEmailAndPassword(email, password)
+        return auth.signInWithEmailAndPassword(email, password)
     }
 
     return (

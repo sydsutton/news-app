@@ -61,7 +61,7 @@ const NewsArticleComponent = ({article}) => {
                 </button>
                 :
                 <button 
-                    className={buttonClass}
+                    className={`${buttonClass} outline`}
                     onClick={() => removeArticle(article)}>
                         <AiOutlineMinus size={15} className="pr-3" />Unsave Article
                 </button> 

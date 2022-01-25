@@ -3,7 +3,7 @@ import {Link, useNavigate} from "react-router-dom"
 import {Context} from "../Context"
 
 const SignupComponent = () => {
-    const {setModalOpen, signup, currentUser, login} = useContext(Context)
+    const {setModalOpen, signup} = useContext(Context)
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
@@ -30,8 +30,6 @@ const SignupComponent = () => {
         }
         
     }
-
-    console.log(currentUser)
 
     return (
         <div className="signup-container">
