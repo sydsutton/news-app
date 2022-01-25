@@ -1,23 +1,42 @@
-import React, {useContext, useState} from "react"
+import React, {useContext, useState, useRef} from "react"
+import {Link} from "react-router-dom"
 import {Context} from "../Context"
 
 const LoginComponent = () => {
     const {setModalOpen} = useContext(Context)
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [error, setError] = useState("")
+    const [confirmPassword, setConfirmPassword] = useState("")
+
+    const emailRef = useRef() 
+    const passwordRef = useRef() 
+    const confirmPasswordRef = useRef()
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        if(password !== confirmPassword){
+            setError("Please make sure your passwords match")
+        } else {
+            setError("")
+        }
+    }
 
     return (
         <div className="my-modal">
             <div className="inner my-shadow">
-                <h1>Log In</h1>
+                <h1>Sign Up</h1>
                 <hr className="hr"/>
-                <form className="login-form">
+                <div className="signup-error">{error ? error : null}</div>
+                <form className="login-form" onSubmit={handleSubmit}>
                     <input 
                         className="my-shadow" 
-                        type="text" 
+                        type="email" 
                         value={username} 
-                        placeholder="Username" 
+                        placeholder="Email" 
                         onChange={(e) => setUsername(e.target.value)}
+                        ref={emailRef}
+                        required
                     />
                     <input 
                         className="my-shadow" 
@@ -25,17 +44,24 @@ const LoginComponent = () => {
                         value={password} 
                         placeholder="Password"
                         onChange={(e) => setPassword(e.target.value)}
+                        ref={passwordRef}
+                        required
                     />
-                    <button className="my-shadow login-btn" type="submit">Log In</button>
+                    <input 
+                        className="my-shadow" 
+                        type="password" 
+                        value={confirmPassword} 
+                        placeholder="Confirm Password"
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        ref={confirmPasswordRef}
+                        required
+                    />
+                    <button className="my-shadow login-btn" type="submit">Sign Up</button>
                 </form>
                 <div className="alt-login">
-                    <p>Don't have an account?</p>
+                    <p>Already have an account?</p>
+                    <Link to=""><p>Login</p></Link>
                     <hr className="hr mb-3"/>
-                    <div className="btn-group">
-                        <button>Create an account</button>
-                        <button>Log in with Google</button>
-                        <button>Log in with Facebook</button>
-                    </div>
                 </div>
                 <button className="close-modal-btn" onClick={() => setModalOpen(false)}>X</button>
             </div>

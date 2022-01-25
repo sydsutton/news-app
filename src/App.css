@@ -414,6 +414,11 @@ select{
   z-index: 2;
 }
 
+.signup-error {
+  color: rgb(207, 26, 26);
+  text-decoration: underline;
+}
+
 @media (min-width: 200px) and (max-width: 990px) {
   .nav-list-item {
     font-size: .8em;
