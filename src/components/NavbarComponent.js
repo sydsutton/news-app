@@ -109,16 +109,16 @@ const NavbarComponent = () => {
                             className={savedArticlesActive ? "active nav-list-item" : "nav-list-item"}
                         >
                             {savedArticlesArray.length > 0 ? 
-                                <div><FaUserCircle size={20} /><div className="d-inline">{savedArticlesArray.length} Saved</div> </div>
+                                <div className="d-flex flex-row justify-content-evenly"><FaUserCircle size={15} /><div className="d-inline">{savedArticlesArray.length} Saved</div> </div>
                                 : 
-                                <div><FaUserCircle size={20}/><div className="d-inline">Saved</div> </div>
+                                <div className="d-flex flex-row justify-content-evenly"><FaUserCircle size={15}/><div className="d-inline">Saved</div> </div>
                             }
                         </div>
                     </Link>
                     :
                     <>
                         <button 
-                            className={loginActive ? "nav-list-item bg-transparent nav-login" : "nav-list-item bg-transparent nav-login" }
+                            className={loginActive ? "nav-list-item nav-login" : "nav-list-item nav-login" }
                             onClick={() => setModalOpen(true)}>
                                 <AiOutlineLogin size={15} /> Log In
                         </button>

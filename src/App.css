@@ -167,6 +167,13 @@ input {
 
 .nav-list-item:last-child {
   margin-right: 2em;
+  text-align: center
+}
+
+.nav-list-item:hover,
+.nav-login:hover {
+  background:rgb(48, 77, 78);
+  color:rgb(235, 233, 233);
 }
 
 .toggle-icon {
@@ -311,10 +318,8 @@ select{
 }
 
 .active {
-  color:rgb(228, 237, 241);
-  background-color:rgb(51, 50, 50);
+  border-bottom: 3px solid rgb(51, 50, 50);
   height: 100%;
-  border-radius: 10px 5px 10px 5px;
 }
 
 .nav-bg {
@@ -435,20 +440,25 @@ select{
   padding: .5em;
 }
 
+.nav-login {
+  padding-right: 2rem;
+  background: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 @media (min-width: 200px) and (max-width: 990px) {
   .nav-list-item {
     font-size: .8em;
     padding: .4rem;
     letter-spacing: .08em;
-    text-align: center;
+    text-align: right;
   }
  
   .subject-container {
     padding: 1rem;
-  }
-
-  .nav-login {
-    padding-right: 2rem;
   }
 
   .list-item {
@@ -482,8 +492,7 @@ select{
   }
 
   .nav-login {
-    width: 100%;
-    text-align: right;
+    margin-left: auto;
   }
 
   select {
