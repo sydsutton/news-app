@@ -34,6 +34,16 @@ h1, h2, h3, h4 {
   margin: 0 auto;
 }
 
+.wave {
+  z-index: -1;
+  position: fixed;
+  left: 0px;
+  top: 50px;
+  min-width: 100vw;
+  height: 400px;
+  opacity: .1;
+}
+
 .page-width {
   max-width: 1500px;
 }
@@ -221,7 +231,7 @@ select {
 .hr {
   width: 75%;
   max-width: 40rem;
-  border: .5px solid rgb(204, 201, 201);
+  border: .5px solid rgb(126, 125, 125);
   margin: 1rem auto 2rem auto;
 }
 
@@ -281,7 +291,6 @@ select{
 
 .card:hover {
   background-image: linear-gradient(320deg, rgb(151, 217, 250), rgb(199, 228, 228));
-  /* background-color: rgb(151, 217, 250); */
   transform: scale(1.02);
   box-shadow: 5px 5px 5px rgba(0,0,0,.15);
 }
@@ -563,5 +572,10 @@ select{
   .nav-input {
     margin-left: -3.2rem;
     width: 120px;
+  }
+
+  .wave {
+    height: 400px;
+    left: -200px;
   }
 }

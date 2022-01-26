@@ -61,7 +61,7 @@ const NavbarComponent = () => {
     }
 
     return (
-        <Navbar collapseOnSelect className={modalOpen ? "nav-bg mb-4 my-shadow disabled" : "nav-bg mb-4 my-shadow"} fixed="top" expand="lg">
+        <Navbar collapseOnSelect className={modalOpen ? "nav-bg my-shadow disabled" : "nav-bg my-shadow"} fixed="top" expand="lg">
             <Navbar.Brand href="/"><img src={logo} className="logo" alt="Newz logo" /></Navbar.Brand>
             <div className="float-right custom-width">
                 <form className="text-right d-flex align-items-center">
