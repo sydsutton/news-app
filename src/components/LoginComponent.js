@@ -25,7 +25,9 @@ const LoginComponent = () => {
     }
 
     return (
-        <div className="my-modal">
+        <>
+            <div className="my-modal" onClick={() => setModalOpen(false)}>
+            </div>
             <div className="inner my-shadow">
                 <h3 className="letter-spacing">Log In</h3>
                 <hr className="hr mb-2"/>
@@ -60,7 +62,7 @@ const LoginComponent = () => {
                 </div>
                 <button className="close-modal-btn" onClick={() => setModalOpen(false)}>X</button>
             </div>
-        </div>
+        </>
     )
 }
 

@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import {Link, useNavigate} from "react-router-dom"
 import {Context} from "../Context"
 
@@ -10,6 +10,10 @@ const SignupComponent = () => {
     const [confirmPassword, setConfirmPassword] = useState("")
 
     const navigate = useNavigate()
+
+    useEffect(()=> {
+        window.scrollTo(0, 0);
+    }, [])
 
     const handleSubmit = async(e) => {
         e.preventDefault()

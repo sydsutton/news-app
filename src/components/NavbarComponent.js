@@ -29,16 +29,19 @@ const NavbarComponent = () => {
     }
 
     useEffect(()=>{
-        setInactive()
         if (location.pathname === "/most-popular"){
+            setInactive()
             setMostPopularActive(true)
          } else if(location.pathname === "/live-news"){
+            setInactive()
             setLiveNewsActive(true)
          } else if(location.pathname === "/saved"){
+            setInactive()
             setSavedArticlesActive(true)
          } else if(location.pathname === "/signup"){
              setInactive()
          } else if(location.pathname === "/"){
+            setInactive()
             setTopStoriesActive(true)
          }
     }, [location.pathname, modalOpen])
@@ -57,11 +60,16 @@ const NavbarComponent = () => {
     }
 
     return (
-        <Navbar className={modalOpen ? "nav-bg mb-4 my-shadow disabled" : "nav-bg mb-4 my-shadow"} fixed="top" expand="lg" sticky="top">
+        <Navbar collapseOnSelect className={modalOpen ? "nav-bg mb-4 my-shadow disabled" : "nav-bg mb-4 my-shadow"} fixed="top" expand="lg">
             <Navbar.Brand href="/"><img src={logo} className="logo" alt="Newz logo" /></Navbar.Brand>
             <div className="float-right custom-width">
                 <form className="text-right d-flex align-items-center">
-                    <input className="my-shadow" type="text" value={tempSearch} onChange={e => setTempSearch(e.target.value)} />
+                    <input 
+                        className="my-shadow nav-input" 
+                        type="text" 
+                        value={tempSearch} 
+                        onChange={e => setTempSearch(e.target.value)} 
+                    />
                     <button 
                         className="search-button"
                         type="submit" 
@@ -71,50 +79,46 @@ const NavbarComponent = () => {
                     </button>
                 </form>
             </div>
-            <Navbar.Toggle className="toggle-icon"/>
-            <Navbar.Collapse className="nav-bg">
+            <Navbar.Toggle className="toggle-icon" aria-controls="navbar"/>
+            <Navbar.Collapse className="nav-bg" id="navbar" >
                 <Nav className="nav-collapse">
-                    <Link 
-                        to="/"
+                    <Nav.Link 
+                        as={Link} 
+                        to="/" 
+                        eventKey={1}
+                        className={topStoriesActive ? "active nav-list-item" : "nav-list-item"}
                     >
-                        <div
-                            className={topStoriesActive ? "active nav-list-item" : "nav-list-item"}
-                        >
-                            Top Stories
-                        </div>
-                    </Link>
-                    <Link 
+                        Top Stories
+                    </Nav.Link>
+                    <Nav.Link 
+                        as={Link}
                         to="/most-popular"
+                        eventKey={2}
+                        className={mostPopularActive ? "active nav-list-item" : "nav-list-item"}
                     >
-                        <div
-                            className={mostPopularActive ? "active nav-list-item" : "nav-list-item"}
-                        >
                         Most Popular
-                        </div>
-                    </Link>
-                    <Link 
+                    </Nav.Link>
+                    <Nav.Link 
+                        as={Link}
                         to="/live-news" 
+                        eventKey={3}
+                        className={liveNewsActive ? "active nav-list-item" : "nav-list-item"}
                     >
-                        <div
-                            className={liveNewsActive ? "active nav-list-item" : "nav-list-item"}
-                        >
-                            Real-Time News
-                        </div>
-                    </Link>
+                        Real-Time News
+                    </Nav.Link>
                     {isLoggedIn ?
-                    <Link 
+                    <Nav.Link 
+                        as={Link}
                         to="/saved" 
+                        eventKey={4}
+                        className={savedArticlesActive ? "active nav-list-item" : "nav-list-item"}
                     >
-                        <div
-                            className={savedArticlesActive ? "active nav-list-item" : "nav-list-item"}
-                        >
-                            {savedArticlesArray.length > 0 ? 
-                                <div className="d-flex flex-row justify-content-evenly"><FaUserCircle size={15} /><div className="d-inline">{savedArticlesArray.length} Saved</div> </div>
-                                : 
-                                <div className="d-flex flex-row justify-content-evenly"><FaUserCircle size={15}/><div className="d-inline">Saved</div> </div>
-                            }
-                        </div>
-                    </Link>
+                        {savedArticlesArray.length > 0 ? 
+                            <div className="d-flex flex-row justify-content-evenly"><FaUserCircle size={15} /><div className="d-inline">{savedArticlesArray.length} Saved</div> </div>
+                            : 
+                            <div className="d-flex flex-row justify-content-evenly"><FaUserCircle size={15}/><div className="d-inline">Saved</div> </div>
+                        }
+                    </Nav.Link>
                     :
                     <>
                         <button 

@@ -24,7 +24,6 @@ function App() {
         null
       }
       <Navbar />
-      {errorMessage ? <h3>{errorMessage}</h3> : null}
       <Routes>
           <Route exact path="/" element={<TopStories />} />
           <Route path="/most-popular" element={<MostPopular />} />
@@ -34,7 +33,6 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
         </Routes>
-
     </div>
   );
 }

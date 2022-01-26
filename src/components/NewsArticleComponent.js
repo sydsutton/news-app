@@ -8,18 +8,17 @@ const NewsArticleComponent = ({article}) => {
     const {title, abstract, multimedia, media, headline, byline, updated, created_date, pub_date, url, web_url} = article
     const {saveArticle, removeArticle, savedArticlesArray, isLoggedIn, setModalOpen} = useContext(Context)
 
-    const [visible, setVisible] = useState(false)
     const buttonClass = "saved d-flex align-items-center justify-content-evenly"
 
     return (
         <>
-            <div onClick={() => setVisible(!visible)} className="card-div">
-                <div className="overlay rounded-edges" style={visible ? {display: "block"} : {display: "none"}}>
+            <div onClick={() => window.open(url ? url : web_url)} className="card-div">
+                {/* <div className="overlay rounded-edges" style={visible ? {display: "block"} : {display: "none"}}>
                     <div className="overlay-text">
                         <h4>Go to link</h4>
-                        <button onClick={() => window.open(url)} className="overlay-link my-shadow">{url ? url : web_url}</button>
+                        <button onClick={() => window.open(url ? url : web_url)} className="overlay-link my-shadow">{url ? url : web_url}</button>
                     </div>
-                </div>
+                </div> */}
                 <div className="my-flex-column">
                     <h3 className="letter-spacing">{title ? title : headline ? headline.main : null}</h3>
                     <p className="small lower-case float-right byline">{byline.original ? byline.original : byline.original === null ? "By Uknown" : byline && !byline.original ? byline : null}</p>

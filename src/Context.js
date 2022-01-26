@@ -65,6 +65,10 @@ const ContextProvider = (props) => {
                             throw Error(res.statusText);
                     }})
                     .then(data => {
+                        console.log(data)
+                        if(data.response.docs.length === 0){
+                            setErrorMessage("Sorry, but we didn't find any articles")
+                        }
                         setLoading(false)
                         setSearchData(data.response.docs)
                     })
