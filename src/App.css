@@ -192,6 +192,7 @@ input {
 
 .toggle-icon {
   margin-right: 1rem;
+  margin-left: 0;
 }
 
 .search-button {
@@ -475,7 +476,7 @@ select{
 
 .nav-input {
   width: 25%;
-  min-width: 175px;
+  min-width: 125px;
   font-size: .9em;
 }
 
@@ -495,7 +496,7 @@ select{
     letter-spacing: .08em;
     text-align: center;
   }
- 
+
   .subject-container {
     padding: 1rem;
   }
@@ -511,7 +512,8 @@ select{
   }
 
   .search-button {
-    font-size: .8em;;
+    font-size: .8em;
+    margin-right: 0;
   }
 
   .custom-width {
@@ -558,4 +560,8 @@ select{
     margin-bottom: 0;
   }
 
+  .nav-input {
+    margin-left: -3.2rem;
+    width: 120px;
+  }
 }

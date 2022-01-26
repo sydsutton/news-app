@@ -26,6 +26,7 @@ const NavbarComponent = () => {
         setMostPopularActive(false)
         setLiveNewsActive(false)
         setSavedArticlesActive(false)
+        setLoginActive(false)
     }
 
     useEffect(()=>{
@@ -120,13 +121,12 @@ const NavbarComponent = () => {
                         }
                     </Nav.Link>
                     :
-                    <>
-                        <button 
-                            className={loginActive ? "nav-list-item nav-login" : "nav-list-item nav-login" }
-                            onClick={() => setModalOpen(true)}>
-                                <AiOutlineLogin size={15} /> Log In
-                        </button>
-                    </>
+                    <Nav.Link eventKey={5}
+                        className={loginActive ? "nav-list-item nav-login" : "nav-list-item nav-login" }
+                        onClick={() => setModalOpen(true)}
+                    >
+                        <AiOutlineLogin size={15} /> Log In
+                    </Nav.Link>
                     }
                 </Nav>
             </Navbar.Collapse>
