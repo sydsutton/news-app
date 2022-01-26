@@ -14,7 +14,7 @@ import {Routes, Route} from "react-router-dom"
 import {Context} from "./Context"
 
 function App() {
-  const {errorMessage, modalOpen} = useContext(Context)
+  const {modalOpen} = useContext(Context)
 
   return (
     <div className="app">

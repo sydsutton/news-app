@@ -15,13 +15,16 @@ const SignupComponent = () => {
         window.scrollTo(0, 0);
     }, [])
 
+
     const handleSubmit = async(e) => {
         e.preventDefault()
         if(password !== confirmPassword){
             setError("Please make sure your passwords match")
         } else if (password === confirmPassword && password.length < 6){
-            setError("You password must be at least 6 characters")
-        } else {
+            setError("Your password must be at least 6 characters")
+        } else if (!password.includes("!" || "@" || "#" || "$" || "%" || "^" || "~" || "&" || "*" || "(" || ")" || "_" || "-" || "+" || "=" || "`")){
+            setError("Your password must include one special character")
+        }  else {
             try {
                 setError("")
                 await signup(email, password)
