@@ -50,9 +50,13 @@ const LoginComponent = () => {
                     <button className="my-shadow login-btn" type="submit">Log In</button>
                 </form>
                 <div className="alt-login">
+                    <div className="d-flex flex-row align-items-center text-align-center mb-0">
+                        <p>Forgot password?</p>
+                        <Link to="forgot-password" onClick={() => setModalOpen(false)}><p>Reset password</p></Link>
+                    </div>
+                    <hr className="hr mt-0 mb-2"/>
                     <p>Don't have an account?</p>
                     <Link to="/signup" onClick={() => setModalOpen(false)}><p>Sign up</p></Link>
-                    <hr className="hr mb-3"/>
                 </div>
                 <button className="close-modal-btn" onClick={() => setModalOpen(false)}>X</button>
             </div>

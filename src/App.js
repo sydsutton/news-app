@@ -8,6 +8,7 @@ import Search from "./components/SearchComponent"
 import SavedArticles from './components/SavedArticlesComponent';
 import Signup from "./components/SignupComponent"
 import Login from "./components/LoginComponent"
+import ForgotPassword from "./components/ForgotPasswordComponent"
 import {Routes, Route} from "react-router-dom"
 
 import {Context} from "./Context"
@@ -31,6 +32,7 @@ function App() {
           <Route path="/search" element={<Search />} />
           <Route path="/saved" element={<SavedArticles />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
         </Routes>
 
     </div>

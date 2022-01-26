@@ -92,6 +92,10 @@ const ContextProvider = (props) => {
         return auth.signInWithEmailAndPassword(email, password)
     }
 
+    const reset = (email) => {
+        return auth.sendPasswordResetEmail(email)
+    }
+
     return (
         <Context.Provider value={{
             sectionList,
@@ -115,7 +119,8 @@ const ContextProvider = (props) => {
             setModalOpen,
             currentUser,
             signup,
-            login
+            login,
+            reset
         }}>
             {props.children}
         </Context.Provider>

@@ -158,6 +158,20 @@ input {
   padding-left: .3rem;
 }
 
+.reset-form {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.reset-form input {
+  width: 80%;
+  padding: 1.25em;
+  margin: 1em;
+}
+
 .nav-collapse {
   width: 100%;
   display: flex;
@@ -429,6 +443,11 @@ select{
   text-decoration: underline;
 }
 
+.success {
+  color: rgb(31, 167, 31);
+  text-decoration: underline;
+}
+
 .outline {
   background: transparent;
   color:rgb(39, 37, 37);
@@ -510,7 +529,7 @@ select{
   .inner {
     min-width: unset;
     width: 300px;
-    height: 350px;
+    height: 375px;
     right: calc(50% - 150px);
     font-size: .9em;
   }
