@@ -48,6 +48,7 @@ const LoginComponent = () => {
                             setEmail(e.target.value)
                         }}
                         required
+                        title="Please provide a valid email address"
                     />
                     <input 
                         className="my-shadow" 

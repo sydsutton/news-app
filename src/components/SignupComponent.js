@@ -49,11 +49,13 @@ const SignupComponent = () => {
 
             <div className="small">
                 <div className={password.length > 6 ? `text-success` : `text-secondary`}>
-                    {password.length > 6 ? 
-                        <><AiOutlineCheck size={20} className="mr-3" />Password must be at least 6 characters long</>
-                        : 
-                        <><BsX size={15} className="mr-3"/>Password must be at least 6 characters long</>
+                    <div className="d-flex flex-row align-items-center justify-content-center">
+                        {password.length > 6 ? 
+                            <><AiOutlineCheck size={20} className="mr-3" />Password must be at least 6 characters long</>
+                            : 
+                            <><BsX size={15} className="mr-3"/>Password must be at least 6 characters long</>
                         }
+                    </div>
                 </div>
                 <div className={checkPass(password) ? `text-success` : `text-secondary`}>
                     {checkPass(password)  ? 
@@ -70,6 +72,11 @@ const SignupComponent = () => {
                         }
                 </div>
             </div>
+
+            <div className="alt-login d-flex flex-row justify-content-center mt-4">
+                <p>Already have an account?</p>
+                <Link to="/" onClick={() => setModalOpen(true)}><p>Login</p></Link>
+            </div>
             
             <form className="login-form" onSubmit={handleSubmit}>
                 <input 
@@ -82,6 +89,7 @@ const SignupComponent = () => {
                         setEmail(e.target.value)
                     }}
                     required
+                    onError={"Please use a valid email address"}
                 />
                 <input 
                     className="my-shadow" 
@@ -107,12 +115,8 @@ const SignupComponent = () => {
                 />
                 <button className="my-shadow login-btn" type="submit">Sign Up</button>
             </form>
-            <div className="alt-login">
-                <p>Already have an account?</p>
-                <Link to="/" onClick={() => setModalOpen(true)}><p>Login</p></Link>
-                <hr className="hr mb-3"/>
-            </div>
             <button className="close-modal-btn" onClick={() => setModalOpen(false)}>X</button>
+            <hr className="hr mb-3"/>
         </div>
     )
 }

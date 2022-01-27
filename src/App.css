@@ -442,8 +442,8 @@ select{
 }
 
 .login-btn:hover {
-  background:rgb(231, 235, 231);
-  color: rgb(51, 50, 50);
+  background:rgb(41, 41, 41);
+  color: rgb(211, 235, 231);
 }
 
 .article-login {
