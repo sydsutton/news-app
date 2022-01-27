@@ -1,4 +1,4 @@
-import React, {useState, useContext} from "react"
+import React, {useState, useContext, useEffect} from "react"
 import {Context} from "../Context"
 import {Link} from "react-router-dom"
 
@@ -8,16 +8,20 @@ const ForgotPasswordComponent = () => {
     const [success, setSuccess] = useState("")
     const {setModalOpen, reset} = useContext(Context)
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    },[])
+
     const handleSubmit = async(e) => {
         e.preventDefault()
         setError("")
         setSuccess("")
         try {
             await reset(email)
+                .then(() => setSuccess("Please check your inbox to reset your password"))
                 .catch((error) => {
-                    alert(error.message)
+                    setError(error.message)
                 })
-            setSuccess("Please check your inbox to reset your password")
         } catch {
             setError("Failed to reset password")
         }
@@ -35,7 +39,10 @@ const ForgotPasswordComponent = () => {
                     type="email" 
                     value={email} 
                     placeholder="Email" 
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => {
+                        setError("")
+                        setEmail(e.target.value)
+                    }}
                     required
                 />
                 <button className="my-shadow login-btn" type="submit">Reset password</button>

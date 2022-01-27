@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useContext, useState, useEffect } from 'react';
 import {Link, useNavigate} from "react-router-dom"
 import {AiOutlineCheck} from "react-icons/ai"
 import {BsX} from "react-icons/bs"
@@ -10,7 +10,6 @@ const SignupComponent = () => {
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
-
     const navigate = useNavigate()
 
     useEffect(()=> {
@@ -34,7 +33,7 @@ const SignupComponent = () => {
                         navigate("/")
                         setModalOpen(true)
                     })
-                    .catch((error) => {alert(error.message)})
+                    .catch((error) => {setError(error.message)})
             } catch {
                 setError("Failed to create an account")
             }   
@@ -46,7 +45,7 @@ const SignupComponent = () => {
         <div className="signup-container">
             <h2 className="letter-spacing">Sign Up</h2>
             <hr className="hr mb-2"/>
-            <div className="signup-error">{error ? error : null}</div>
+            <div className="signup-error mb-3">{error ? error : null}</div>
 
             <div className="small">
                 <div className={password.length > 6 ? `text-success` : `text-secondary`}>
@@ -78,7 +77,10 @@ const SignupComponent = () => {
                     type="email" 
                     value={email} 
                     placeholder="Email" 
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => {
+                        setError("")
+                        setEmail(e.target.value)
+                    }}
                     required
                 />
                 <input 
@@ -86,7 +88,10 @@ const SignupComponent = () => {
                     type="password" 
                     value={password} 
                     placeholder="Password"
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => {
+                        setError("")
+                        setPassword(e.target.value)
+                    }}
                     required
                 />
                 <input 
@@ -94,7 +99,10 @@ const SignupComponent = () => {
                     type="password" 
                     value={confirmPassword} 
                     placeholder="Confirm Password"
-                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    onChange={(e) => {
+                        setError("")
+                        setConfirmPassword(e.target.value)
+                    }}
                     required
                 />
                 <button className="my-shadow login-btn" type="submit">Sign Up</button>

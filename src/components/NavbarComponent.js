@@ -44,6 +44,8 @@ const NavbarComponent = () => {
          } else if(location.pathname === "/"){
             setInactive()
             setTopStoriesActive(true)
+         } else if(location.pathname === "/forgot-password"){
+             setInactive()
          }
     }, [location.pathname, modalOpen])
 

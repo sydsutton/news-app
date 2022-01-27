@@ -396,7 +396,7 @@ select{
   right: calc(50% - 200px);
   min-width: 400px; 
   width: 400px;
-  height: 425px;
+  min-height: 425px;
   background:rgb(236, 240, 236);
   border-radius: 20px;
   padding: 1rem;
@@ -427,6 +427,10 @@ select{
 
 .login-form input {
   font-weight: normal;
+}
+
+.link:hover {
+  color: rgb(57, 58, 57);
 }
 
 .login-btn {
