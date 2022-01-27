@@ -20,9 +20,7 @@ const LoginComponent = () => {
                     setModalOpen(false)
                     navigate("/saved")
                 })
-                .catch((error) => {
-                    setError(error.message)
-                })
+                .catch((error) => {setError(error.message.slice(9, error.message.length))})
 
         } catch {
             setError("Failed to log in")
@@ -40,7 +38,7 @@ const LoginComponent = () => {
                 <form className="login-form" onSubmit={handleSubmit}>
                     <input 
                         className="my-shadow" 
-                        type="email" 
+                        type="text" 
                         value={email} 
                         placeholder="Email" 
                         onChange={(e) => {

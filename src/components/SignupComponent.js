@@ -10,6 +10,7 @@ const SignupComponent = () => {
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
+
     const navigate = useNavigate()
 
     useEffect(()=> {
@@ -23,6 +24,7 @@ const SignupComponent = () => {
 
     const handleSubmit = async(e) => {
         e.preventDefault()
+
         if(password !== confirmPassword || password === confirmPassword && password.length < 6 || !checkPass(password)){
             console.log("Error")
         } else {
@@ -33,7 +35,7 @@ const SignupComponent = () => {
                         navigate("/")
                         setModalOpen(true)
                     })
-                    .catch((error) => {setError(error.message)})
+                    .catch((error) => {setError(error.message.slice(9, error.message.length))})
             } catch {
                 setError("Failed to create an account")
             }   
@@ -72,16 +74,16 @@ const SignupComponent = () => {
                         }
                 </div>
             </div>
-
-            <div className="alt-login d-flex flex-row justify-content-center mt-4">
-                <p>Already have an account?</p>
-                <Link to="/" onClick={() => setModalOpen(true)}><p>Login</p></Link>
+            
+            <div className="mt-3 d-flex flex-row justify-content-evenly alt-login">
+                <div>Already have an account?</div>
+                <Link to="/" className="link" onClick={() => setModalOpen(true)}>Login</Link>
             </div>
             
             <form className="login-form" onSubmit={handleSubmit}>
                 <input 
                     className="my-shadow" 
-                    type="email" 
+                    type="text" 
                     value={email} 
                     placeholder="Email" 
                     onChange={(e) => {
@@ -89,7 +91,6 @@ const SignupComponent = () => {
                         setEmail(e.target.value)
                     }}
                     required
-                    onError={"Please use a valid email address"}
                 />
                 <input 
                     className="my-shadow" 

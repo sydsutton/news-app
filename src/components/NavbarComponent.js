@@ -39,14 +39,12 @@ const NavbarComponent = () => {
          } else if(location.pathname === "/saved"){
             setInactive()
             setSavedArticlesActive(true)
-         } else if(location.pathname === "/signup"){
+         } else if(location.pathname === "/signup" || location.pathname === "/forgot-password" || location.pathname === "/search"){
              setInactive()
          } else if(location.pathname === "/"){
             setInactive()
             setTopStoriesActive(true)
-         } else if(location.pathname === "/forgot-password"){
-             setInactive()
-         }
+         } 
     }, [location.pathname, modalOpen])
 
 

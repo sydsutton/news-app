@@ -12,7 +12,7 @@ const NewsArticleComponent = ({article}) => {
 
     return (
         <>
-            <div onClick={() => window.open(url ? url : web_url)} className="card-div">
+            <div onClick={() => window.open(url ? url : web_url, "New York Times", + "height=500px," + "width=300px," + "modal=yes," + "top=200")} className="card-div">
                 {/* <div className="overlay rounded-edges" style={visible ? {display: "block"} : {display: "none"}}>
                     <div className="overlay-text">
                         <h4>Go to link</h4>

@@ -19,9 +19,8 @@ const ForgotPasswordComponent = () => {
         try {
             await reset(email)
                 .then(() => setSuccess("Please check your inbox to reset your password"))
-                .catch((error) => {
-                    setError(error.message)
-                })
+                .catch((error) => {setError(error.message.slice(9, error.message.length))})
+
         } catch {
             setError("Failed to reset password")
         }
@@ -36,7 +35,7 @@ const ForgotPasswordComponent = () => {
             <form className="reset-form" onSubmit={(e) => handleSubmit(e)}>
                 <input 
                     className="my-shadow" 
-                    type="email" 
+                    type="text" 
                     value={email} 
                     placeholder="Email" 
                     onChange={(e) => {
