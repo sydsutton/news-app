@@ -3,22 +3,27 @@ import {Link, useNavigate} from "react-router-dom"
 import {Context} from "../Context"
 
 const LoginComponent = () => {
-    const {setModalOpen, login, setIsLoggedIn} = useContext(Context)
+    const {setModalOpen, login, setIsLoggedIn, currentUser} = useContext(Context)
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
 
     const navigate = useNavigate()
     
-
     const handleSubmit = async(e) => {
         e.preventDefault()
         try {
             setError("")
             await login(email, password)
-            navigate("/saved")
-            setIsLoggedIn(true)
-            setModalOpen(false)
+                .then(() => {
+                    setIsLoggedIn(true)
+                    setModalOpen(false)
+                    navigate("/saved")
+                })
+                .catch((error) => {
+                    alert(error.message)
+                })
+
         } catch {
             setError("Failed to log in")
         }   

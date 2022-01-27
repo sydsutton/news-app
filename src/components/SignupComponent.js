@@ -1,5 +1,7 @@
 import React, {useContext, useState, useEffect} from 'react';
 import {Link, useNavigate} from "react-router-dom"
+import {AiOutlineCheck} from "react-icons/ai"
+import {BsX} from "react-icons/bs"
 import {Context} from "../Context"
 
 const SignupComponent = () => {
@@ -15,20 +17,24 @@ const SignupComponent = () => {
         window.scrollTo(0, 0);
     }, [])
 
+    const checkPass = (str) => {
+        const specialChar = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
+        return specialChar.test(str)
+    }
 
     const handleSubmit = async(e) => {
         e.preventDefault()
-        if(password !== confirmPassword){
-            setError("Please make sure your passwords match")
-        } else if (password === confirmPassword && password.length < 6){
-            setError("Your password must be at least 6 characters")
-        } else if (!password.includes("!" || "@" || "#" || "$" || "%" || "^" || "~" || "&" || "*" || "(" || ")" || "_" || "-" || "+" || "=" || "`")){
-            setError("Your password must include one special character")
-        }  else {
+        if(password !== confirmPassword || password === confirmPassword && password.length < 6 || !checkPass(password)){
+            console.log("Error")
+        } else {
             try {
                 setError("")
                 await signup(email, password)
-                navigate("/")
+                    .then(() => {
+                        navigate("/")
+                        setModalOpen(true)
+                    })
+                    .catch((error) => {alert(error.message)})
             } catch {
                 setError("Failed to create an account")
             }   
@@ -41,6 +47,31 @@ const SignupComponent = () => {
             <h2 className="letter-spacing">Sign Up</h2>
             <hr className="hr mb-2"/>
             <div className="signup-error">{error ? error : null}</div>
+
+            <div className="small">
+                <div className={password.length > 6 ? `text-success` : `text-secondary`}>
+                    {password.length > 6 ? 
+                        <><AiOutlineCheck size={20} className="mr-3" />Password must be at least 6 characters long</>
+                        : 
+                        <><BsX size={15} className="mr-3"/>Password must be at least 6 characters long</>
+                        }
+                </div>
+                <div className={checkPass(password) ? `text-success` : `text-secondary`}>
+                    {checkPass(password)  ? 
+                        <><AiOutlineCheck size={20} className="mr-3" />Password must include at least one special character</>
+                        : 
+                        <><BsX size={15} className="mr-3"/>Password must include at least one special character</>
+                        }
+                </div>
+                <div className={password !== "" && password === confirmPassword ? `text-success` : `text-secondary`}>
+                    {password !== "" && password === confirmPassword  ? 
+                        <><AiOutlineCheck size={20} className="mr-3" />Password and confirmation password must match</>
+                        : 
+                        <><BsX size={15} className="mr-3"/>Password and confirmation password must match</>
+                        }
+                </div>
+            </div>
+            
             <form className="login-form" onSubmit={handleSubmit}>
                 <input 
                     className="my-shadow" 

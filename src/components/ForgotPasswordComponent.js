@@ -14,6 +14,9 @@ const ForgotPasswordComponent = () => {
         setSuccess("")
         try {
             await reset(email)
+                .catch((error) => {
+                    alert(error.message)
+                })
             setSuccess("Please check your inbox to reset your password")
         } catch {
             setError("Failed to reset password")
