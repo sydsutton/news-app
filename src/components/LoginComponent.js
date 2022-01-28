@@ -37,7 +37,7 @@ const LoginComponent = () => {
                 <div className="signup-error small">{error ? error : null}</div>
                 <form className="login-form" onSubmit={handleSubmit}>
                     <input 
-                        className="my-shadow" 
+                        className="my-shadow"
                         type="text" 
                         value={email} 
                         placeholder="Email" 

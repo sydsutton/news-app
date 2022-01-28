@@ -459,6 +459,16 @@ select{
   font-size: .9em;
 }
 
+input:focus {
+  outline: 1px solid rgb(87, 178, 224);
+  background:rgb(244, 255, 255);
+}
+
+button:focus {
+  outline: 2px solid rgb(87, 178, 224);
+  border: none;
+}
+
 .nav-login {
   padding-right: 2rem;
   background: transparent;
