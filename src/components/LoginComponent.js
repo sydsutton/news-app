@@ -74,7 +74,7 @@ const LoginComponent = () => {
                             type="checkbox" 
                             onChange={() => setRememberMe(!rememberMe)} 
                         />
-                        <label for="remember">Remember me?</label>
+                        <label for="remember">Remember me</label>
                     </div>
                     <button className="my-shadow login-btn" type="submit">Log In</button>
                 </form>
@@ -87,7 +87,7 @@ const LoginComponent = () => {
                     <Link to="/signup" className="link" onClick={() => setModalOpen(false)}>Sign up</Link>
                 </div>
                 <button 
-                    className="close-modal-btn" 
+                    className="close-modal-btn text-secondary" 
                     onClick={() => {
                         document.getElementById('login').classList.remove('active')
                         setModalOpen(false)

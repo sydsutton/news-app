@@ -27,7 +27,7 @@ const ForgotPasswordComponent = () => {
     }
 
     return (
-        <div>
+        <>
             <h2>Reset Password</h2>
             <hr className="hr" />
             <div className="signup-error">{error ? error : null}</div>
@@ -46,8 +46,10 @@ const ForgotPasswordComponent = () => {
                 />
                 <button className="my-shadow login-btn" type="submit">Reset password</button>
             </form>
-            <Link to="/signup" onClick={() => setModalOpen(true)}>Login</Link>
-        </div>
+            <div className="d-flex flex-row justify-content-center">
+                <div>Remember your password?&nbsp;&nbsp;</div><Link to="/signup" onClick={() => setModalOpen(true)}>Login</Link>
+            </div>
+        </>
     )
 }
 

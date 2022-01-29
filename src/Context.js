@@ -20,6 +20,7 @@ const ContextProvider = (props) => {
 
     useEffect(() => {
         let isMounted = true
+
         setLoading(true)
         try {
             fetch(`https://api.nytimes.com/svc/news/v3/content/section-list.json?api-key=${API_KEY}`)
