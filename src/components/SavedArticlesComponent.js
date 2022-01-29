@@ -20,9 +20,9 @@ const SavedArticlesComponent = () => {
                     <h2 className="letter-spacing">{currentUser.displayName ? `${currentUser.displayName}'s ` : null }Account</h2>
                     <hr className="hr"/>
                     <div className="bg-light mx-auto rounded-edges account d-flex flex-column my-shadow p-3 small">
-                        <p>Display name: {currentUser.displayName}</p>
-                        <p>Email: {currentUser.email}</p>
-                        <p>Account created: {currentUser.metadata.creationTime}</p>
+                        <p>Display name: <strong>{currentUser.displayName}</strong></p>
+                        <p>Email: <strong>{currentUser.email}</strong></p>
+                        <p>Account created: <strong>{currentUser.metadata.creationTime}</strong></p>
                         <hr className="hr" />
                         <input 
                             className="mx-auto mb-4 w-50 border small"
@@ -34,7 +34,8 @@ const SavedArticlesComponent = () => {
                         <button 
                         className="save-btn mb-4"
                             onClick={() => {
-                                setUsername("")
+
+                                navigate("/saved")
                                 currentUser.updateProfile({displayName: username})
                             }}
                         >

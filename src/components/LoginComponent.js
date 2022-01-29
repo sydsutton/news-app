@@ -3,7 +3,7 @@ import {Link, useNavigate} from "react-router-dom"
 import {Context} from "../Context"
 
 const LoginComponent = () => {
-    const {setModalOpen, login, setIsLoggedIn, currentUser} = useContext(Context)
+    const {setModalOpen, login, setIsLoggedIn, rememberMe, setRememberMe} = useContext(Context)
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
@@ -68,6 +68,14 @@ const LoginComponent = () => {
                         }}
                         required
                     />
+                    <div className="d-flex flex-row">
+                        <input 
+                            id="remember" 
+                            type="checkbox" 
+                            onChange={() => setRememberMe(!rememberMe)} 
+                        />
+                        <label for="remember">Remember me?</label>
+                    </div>
                     <button className="my-shadow login-btn" type="submit">Log In</button>
                 </form>
                 <div className="alt-login">

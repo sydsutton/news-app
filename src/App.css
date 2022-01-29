@@ -390,11 +390,9 @@ select{
   width: 80%;
   margin: .5rem;
   padding: 1.25em;
-}
-
-.login-form input {
   font-weight: normal;
 }
+
 
 .link:hover {
   color: rgb(57, 58, 57);
@@ -484,6 +482,12 @@ button:focus {
   align-items: center;
 }
 
+#remember {
+  width: 18px;
+  margin: .5rem;
+  padding: 0;
+}
+
 @media (min-width: 200px) and (max-width: 990px) {
   .nav-list-item {
     font-size: .8em;
@@ -510,6 +514,7 @@ button:focus {
     font-size: .8em;
     margin-right: 0;
   }
+
 
   .custom-width {
     width: unset;

@@ -7,17 +7,15 @@ import {AiOutlineLogin} from "react-icons/ai"
 import {FaUserCircle} from "react-icons/fa"
 
 const NavbarComponent = () => {
+    //I used a temporary search variable so that the search page would not update
+    //the search query with every key stroke.
     const [tempSearch,  setTempSearch] = useState("")
     const [topStoriesActive, setTopStoriesActive] = useState(false)
     const [mostPopularActive, setMostPopularActive] = useState(false)
     const [liveNewsActive, setLiveNewsActive] = useState(false)
-    const [loginActive, setLoginActive] = useState(false)
     const [savedActive, setSavedActive] = useState(false)
 
-    //I used a temporary search variable so that the search page would not update
-    //the search query with every key stroke.
-
-    const {setSearchQuery, setSearchData, setLoading, getSearchData, savedArticlesArray, isLoggedIn, modalOpen, setModalOpen, currentUser} = useContext(Context)
+    const {setSearchQuery, setSearchData, setLoading, getSearchData, savedArticlesArray, isLoggedIn, modalOpen, setModalOpen } = useContext(Context)
     const navigate = useNavigate()
     const location = useLocation()
 
@@ -25,7 +23,6 @@ const NavbarComponent = () => {
         setTopStoriesActive(false)
         setMostPopularActive(false)
         setLiveNewsActive(false)
-        setLoginActive(false)
         setSavedActive(false)
     }
 

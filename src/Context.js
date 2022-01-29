@@ -16,6 +16,7 @@ const ContextProvider = (props) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [modalOpen, setModalOpen] = useState(false)
     const [currentUser, setCurrentUser] = useState()
+    const [rememberMe, setRememberMe] = useState(false)
 
     useEffect(() => {
         let isMounted = true
@@ -129,7 +130,9 @@ const ContextProvider = (props) => {
             signup,
             login,
             reset,
-            signOut
+            signOut,
+            rememberMe,
+            setRememberMe
         }}>
             {props.children}
         </Context.Provider>
