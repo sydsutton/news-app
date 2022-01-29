@@ -12,26 +12,27 @@ const SavedArticlesComponent = () => {
         window.scrollTo(0, 0);
     },[])
 
+    console.log(currentUser)
     return (
         <div className="page-width center">
             {currentUser && isLoggedIn ? 
                 <div className="mb-5">
                     <h2 className="letter-spacing">Account</h2>
                     <hr className="hr"/>
-                    <div className="text-align-left">
+                    <div className="bg-light mx-auto rounded-edges account d-flex flex-column my-shadow">
                         <p>Email: {currentUser.email}</p>
                         <p>Account created: {currentUser.metadata.creationTime}</p>
+                        <button 
+                            className="save-btn" 
+                            style={{maxWidth: "200px"}} 
+                            onClick={() => {
+                                setIsLoggedIn(false)
+                                navigate("/")
+                            }}
+                        >
+                            Log Out
+                        </button>
                     </div>
-                    <button 
-                        className="save-btn" 
-                        style={{maxWidth: "200px"}} 
-                        onClick={() => {
-                            setIsLoggedIn(false)
-                            navigate("/")
-                        }}
-                    >
-                        Log Out
-                    </button>
                 </div>
             :
             null

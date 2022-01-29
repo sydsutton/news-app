@@ -22,11 +22,17 @@ const SignupComponent = () => {
         return specialChar.test(str)
     }
 
+    const checkNums = (str) => {
+        const nums = /[0-9]/
+        return nums.test(str)
+    }
+
     const handleSubmit = async(e) => {
+        console.log(password.length)
         e.preventDefault()
 
-        if(password !== confirmPassword || password === confirmPassword && password.length < 6 || !checkPass(password)){
-            console.log("Error")
+        if(password !== confirmPassword || password.length < 8 || !checkPass(password) || !checkNums(password)){
+            console.log("error")
         } else {
             try {
                 setError("")
@@ -47,15 +53,24 @@ const SignupComponent = () => {
         <div className="signup-container">
             <h2 className="letter-spacing">Sign Up</h2>
             <hr className="hr mb-2"/>
-            <div className="signup-error mb-3">{error ? error : null}</div>
+            <div className="signup-error mb-3 small">{error ? error : null}</div>
 
             <div className="small">
-                <div className={password.length > 6 ? `text-success` : `text-secondary`}>
+                <div className={password.length >= 8 ? `text-success` : `text-secondary`}>
                     <div className="d-flex flex-row align-items-center justify-content-center">
-                        {password.length > 6 ? 
-                            <><AiOutlineCheck size={20} className="mr-3" />Password must be at least 6 characters long</>
+                        {password.length >= 8 ? 
+                            <><AiOutlineCheck size={20} className="mr-3" />Password must be at least 8 characters long</>
                             : 
-                            <><BsX size={15} className="mr-3"/>Password must be at least 6 characters long</>
+                            <><BsX size={15} className="mr-3"/>Password must be at least 8 characters long</>
+                        }
+                    </div>
+                </div>
+                <div className={checkNums(password) ? `text-success` : `text-secondary`}>
+                    <div className="d-flex flex-row align-items-center justify-content-center">
+                        {checkNums(password) ? 
+                            <><AiOutlineCheck size={20} className="mr-3" />Password must include one number</>
+                            : 
+                            <><BsX size={15} className="mr-3"/>Password must include one number</>
                         }
                     </div>
                 </div>
@@ -77,7 +92,7 @@ const SignupComponent = () => {
             
             <div className="mt-3 d-flex flex-row justify-content-evenly alt-login">
                 <div>Already have an account?</div>
-                <Link to="/" className="link" onClick={() => setModalOpen(true)}>Login</Link>
+                <Link to="" className="link" onClick={() => setModalOpen(true)}>Login</Link>
             </div>
             
             <form className="login-form" onSubmit={handleSubmit}>

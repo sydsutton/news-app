@@ -17,7 +17,7 @@ const NavbarComponent = () => {
     //I used a temporary search variable so that the search page would not update
     //the search query with every key stroke.
 
-    const {setSearchQuery, setSearchData, setLoading, getSearchData, savedArticlesArray, isLoggedIn, modalOpen, setModalOpen} = useContext(Context)
+    const {setSearchQuery, setSearchData, setLoading, getSearchData, savedArticlesArray, isLoggedIn, modalOpen, setModalOpen, currentUser} = useContext(Context)
     const navigate = useNavigate()
     const location = useLocation()
 
@@ -30,8 +30,9 @@ const NavbarComponent = () => {
     }
 
     useEffect(() => {
+        let isMounted = true
+
         if(!modalOpen){
-            document.getElementById('loginId').classList.remove('active')
             setInactive()
             if(location.pathname === "/"){
                 setTopStoriesActive(true)
@@ -47,6 +48,7 @@ const NavbarComponent = () => {
         } else {
             setInactive()
         }
+        return isMounted = false
     }, [location.pathname, modalOpen])
 
     const handleClick = (e) => {
@@ -123,7 +125,7 @@ const NavbarComponent = () => {
                     </Nav.Link>
                     :
                     <Nav.Link
-                        id="loginId"
+                        id="login"
                         eventKey={5}
                         className="nav-list-item nav-login"
                         onClick={() => setModalOpen(true)}

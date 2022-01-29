@@ -18,7 +18,7 @@ const LoginComponent = () => {
                 .then(() => {
                     setIsLoggedIn(true)
                     setModalOpen(false)
-                    navigate("/saved")
+                    navigate("/")
                 })
                 .catch((error) => {setError(error.message.slice(9, error.message.length))})
 
@@ -29,7 +29,16 @@ const LoginComponent = () => {
 
     return (
         <>
-            <div className="my-modal" onClick={() => setModalOpen(false)}>
+            <div 
+                className="my-modal" 
+                onClick={() => {
+                document.getElementById('login').classList.remove('active')
+                //because the login nav tab doesn't redirect anywhere and just opens a modal,
+                //I have to forcefully remove the 'active' className when the modal is not open
+                //otherwise, login and _____ will both be active.
+                setModalOpen(false)
+                }}
+            >
             </div>
             <div className="inner my-shadow">
                 <h3 className="letter-spacing">Log In</h3>
@@ -69,7 +78,15 @@ const LoginComponent = () => {
                     <p className="mb-0 mt-4">Don't have an account?</p>
                     <Link to="/signup" className="link" onClick={() => setModalOpen(false)}>Sign up</Link>
                 </div>
-                <button className="close-modal-btn" onClick={() => setModalOpen(false)}>X</button>
+                <button 
+                    className="close-modal-btn" 
+                    onClick={() => {
+                        document.getElementById('login').classList.remove('active')
+                        setModalOpen(false)
+                    }}
+                >
+                    X
+                </button>
             </div>
         </>
     )

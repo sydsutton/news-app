@@ -324,6 +324,7 @@ select{
   font-size: .8rem;
 }
 
+
 .save-btn:hover {
   color:rgb(228, 237, 241);
   background-color:rgb(51, 50, 50);
@@ -332,6 +333,12 @@ select{
 .saved:hover {
   color: rgb(51, 50, 50);
   background: rgb(228, 237, 241);
+}
+
+.account {
+  min-width: 300px;
+  max-width: 600px;
+  height: 150px;
 }
 
 .saved {
