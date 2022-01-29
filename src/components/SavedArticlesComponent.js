@@ -1,31 +1,50 @@
-import React, {useEffect, useContext} from "react"
+import React, {useEffect, useContext, useState} from "react"
 import {Context} from "../Context"
 import NewsArticle from "./NewsArticleComponent"
 import {useNavigate} from "react-router-dom"
 
 const SavedArticlesComponent = () => {
 
-    const {savedArticlesArray, currentUser, isLoggedIn, setIsLoggedIn} = useContext(Context)
+    const {savedArticlesArray, currentUser, isLoggedIn, setIsLoggedIn, signOut} = useContext(Context)
     const navigate = useNavigate()
+    const [username, setUsername] = useState("")
 
     useEffect(() => {
         window.scrollTo(0, 0);
     },[])
 
-    console.log(currentUser)
     return (
         <div className="page-width center">
             {currentUser && isLoggedIn ? 
                 <div className="mb-5">
-                    <h2 className="letter-spacing">Account</h2>
+                    <h2 className="letter-spacing">{currentUser.displayName ? `${currentUser.displayName}'s ` : null }Account</h2>
                     <hr className="hr"/>
-                    <div className="bg-light mx-auto rounded-edges account d-flex flex-column my-shadow">
+                    <div className="bg-light mx-auto rounded-edges account d-flex flex-column my-shadow p-3 small">
+                        <p>Display name: {currentUser.displayName}</p>
                         <p>Email: {currentUser.email}</p>
                         <p>Account created: {currentUser.metadata.creationTime}</p>
+                        <hr className="hr" />
+                        <input 
+                            className="mx-auto mb-4 w-50 border small"
+                            type="text" 
+                            placeholder="New display name"
+                            value={username} 
+                            onChange={(e) => setUsername(e.target.value)} 
+                        />
                         <button 
-                            className="save-btn" 
+                        className="save-btn mb-4"
+                            onClick={() => {
+                                setUsername("")
+                                currentUser.updateProfile({displayName: username})
+                            }}
+                        >
+                            Update display name
+                        </button>
+                        <button 
+                            className="search-button mx-auto px-4" 
                             style={{maxWidth: "200px"}} 
                             onClick={() => {
+                                signOut()
                                 setIsLoggedIn(false)
                                 navigate("/")
                             }}

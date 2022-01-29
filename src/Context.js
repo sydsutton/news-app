@@ -100,6 +100,10 @@ const ContextProvider = (props) => {
         return auth.sendPasswordResetEmail(email)
     }
 
+    const signOut = () => {
+        return auth.signOut()
+    }
+
     return (
         <Context.Provider value={{
             sectionList,
@@ -124,7 +128,8 @@ const ContextProvider = (props) => {
             currentUser,
             signup,
             login,
-            reset
+            reset,
+            signOut
         }}>
             {props.children}
         </Context.Provider>
